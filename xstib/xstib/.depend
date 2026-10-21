@@ -1,0 +1,10 @@
+between.o: between.c sat.h fsound.h fade.h play.h between.h levels.h \
+ global.h
+global.o: global.c sat.h fsound.h fade.h play.h between.h
+levels.o: levels.c sat.h fsound.h fade.h play.h between.h levels.h \
+ global.h
+play.o: play.c sat.h fsound.h fade.h play.h between.h global.h
+sat.o: sat.c sat.h play.h global.h
+userint.o: userint.c sat.h play.h between.h global.h userint.h
+flexisound.o: flexisound.c fsound.h
+fade.o: fade.c fade.h

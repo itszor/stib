@@ -1,0 +1,226 @@
+	AREA |fadecode$$code|, CODE, READONLY
+
+	EXPORT fade_zoom
+
+fade_zoom
+	; front-end for zoom_it routine
+	; params - r0 screen base
+	;r1 sprite base
+	stmfd r13!,{r4-r12,r14}
+	mov r2,#1114112
+zoom_f_e_loop
+	stmfd r13!,{r0-r1,r3}
+	mov r0,#160<<16
+	mov r1,r2
+	bl divide
+	rsb r6,r3,#160
+
+	mov r0,#128<<16
+	mov r1,r2
+	bl divide
+	rsb r7,r3,#128
+	ldmfd r13!,{r0-r1,r3}
+
+	stmfd r13!,{r2-r7}
+	mov r4,r2
+	mov r5,r2
+	mov r2,r6
+	mov r3,r7
+	bl zoom_it
+	ldmfd r13!,{r2-r7}
+	sub r2,r2,#4096
+	cmp r2,#65536
+	bge zoom_f_e_loop
+	ldmfd r13!,{r4-r12,pc}^
+
+zoom_it
+	stmfd r13!,{r0-r12,r14}
+	; params - r0 screen base
+	;r1 sprite base
+	;r2 orig left
+	;r3 orig top
+	;r4 orig scale x
+	;r5 orig scale y
+
+	add r6,r0,r3,lsl #8
+	add r6,r6,r3,lsl #6
+	add r6,r6,r2		; calculate the top-left corner screen address
+
+	; termination for x,y loops is when sprite pointers reach edges (not screen)
+	; loops are variable length, so can't be macro'd
+
+	; ah - need some sprite pointers to be pointy
+	mov r9,#0
+zoom_yloop
+	mov r7,r6		; now we can mess around with r7 as much as we like
+	mov r8,#0
+
+	mov r11,r9,asr #16	; get y-offset into sprite
+	add r10,r1,r11,lsl #8
+	add r10,r10,r11,lsl #6	; multiply by 320
+
+	ands r12,r6,#3
+	eor r12,r12,#3		; same as rsb r12,r12,#3 but, hey, its nice to be different
+	beq zoom_xloopinit	; skip start fudge if offset zero
+
+zoom_startx
+	ldrb r0,[r10,r8,asr #16]
+	strb r0,[r7],#1
+	add r8,r8,r4
+	subs r12,r12,#1
+	bge zoom_startx
+
+	bic r7,r7,#3		; tidy up
+
+zoom_xloopinit
+	ldrb r0,[r10,r8,asr #16]
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #8
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #16
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #24		; 4 pixels scaled
+	add r8,r8,r4			; new structure assumes always 4 pixels
+
+zoom_xloop
+	str r0,[r7],#4			; put here to chop off last few pixels
+
+	ldrb r0,[r10,r8,asr #16]
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #8
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #16
+	add r8,r8,r4
+
+	ldrb r12,[r10,r8,asr #16]
+	orr r0,r0,r12,asl #24		; 4 pixels scaled
+	add r8,r8,r4
+
+	cmp r8,#320<<16
+	blt zoom_xloop
+
+	sub r8,r8,r4,lsl #2		; back to where it was at start of previous loop
+zoom_xloopend
+	strb r0,[r7],#1			; r0 already fully 'loaded up', just need to
+	mov r0,r0,lsr #8		; take it apart byte by byte
+	add r8,r8,r4
+	cmp r8,#320<<16
+	blt zoom_xloopend
+
+	add r6,r6,#320
+	add r9,r9,r5			; the y-scaling step
+	cmp r9,#255<<16			; *** change for hi-res
+	blt zoom_yloop
+
+	ldmfd r13!,{r0-r12,pc}
+
+divide
+	; entry parameters r0 - r0/
+	;r1 - /r1
+	; exit parametersr2 - remainder (not in this version though)
+	;r3 - result
+	stmfd r13!,{r2,r4-r12,r14}
+	ands r6,r0,#1<<31
+	rsbmi r0,r0,#0
+	eor r5,r6,r1
+	cmp r1,#0
+	rsbmi r1,r1,#0
+	mov r2,#0
+	mov r3,#0
+	mov r4,#1<<31
+div_loop
+	movs r0,r0,asl #1
+	adc r2,r2,r2
+	cmp r2,r1
+	subge r2,r2,r1
+	orrge r3,r3,r4
+	movs r4,r4,lsr #1
+	bne div_loop
+	cmp r5,#0
+	rsbmi r3,r3,#0
+	ldmfd r13!,{r2,r4-r12,pc}
+
+
+	EXPORT fade_xfade
+
+fade_xfade
+; params r0 - screen base
+;        r1 - sprite base
+;        r2 - base of colour table
+	stmfd r13!,{r4-r12,r14}
+
+	mov r3,#15		; number of cycles
+xfade_outerloop
+	stmfd r13!,{r3}
+	mov r12,#15
+
+xfade_ditherloop
+	adrl r9,xfade_ditheroff
+	ldr r9,[r9,r12,lsl #2]
+	add r3,r0,r9		; offsetted screen base
+	add r4,r1,r9		; offsetted sprite base
+
+	mov r7,#64
+xfade_yloop
+	mov r5,r3		; tempies for screen
+	mov r6,r4		; tempies for sprite
+
+	mov r8,#80
+xfade_xloop
+	ldrb r10,[r5]
+	ldrb r11,[r6],#4
+	add r11,r10,r11,lsl #8
+	ldrb r10,[r2,r11]
+	strb r10,[r5],#4
+
+	subs r8,r8,#1
+	bgt xfade_xloop
+
+	add r3,r3,#320*4	; next row screen
+	add r4,r4,#320*4	; next row sprite
+
+	subs r7,r7,#1
+	bgt xfade_yloop
+
+	subs r12,r12,#1
+	bge xfade_ditherloop
+
+	ldmfd r13!,{r3}
+
+	subs r3,r3,#1
+	bge xfade_outerloop
+
+	ldmfd r13!,{r4-r12,pc}
+
+
+	AREA |fade$$data|, DATA, READONLY
+
+xfade_ditheroff
+	DCD 0
+	DCD 642
+	DCD 2
+	DCD 640
+	DCD 321
+	DCD 963
+	DCD 323
+	DCD 961
+	DCD 1
+	DCD 643
+	DCD 3
+	DCD 641
+	DCD 320
+	DCD 962
+	DCD 322
+	DCD 960
+
+	END

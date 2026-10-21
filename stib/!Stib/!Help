@@ -1,0 +1,118 @@
+
+
+
+                  ########     ##          ##    ##
+                 ##      ##    ##                ##
+                 ##          ########    ####    #########
+                  ########     ##          ##    ##      ##
+                         ##    ##          ##    ##      ##
+                 ##      ##    ##          ##    ##      ##
+                  ########      #######  ######  #########
+
+                           © Monster Software 1996
+
+                                 FREE RELEASE
+
+
+Introduction
+^^^^^^^^^^^^
+
+Welcome to the fun, exciting world of arcade puzzling! This new, exciting
+release by Monster Software combines all the action of an arcade game with
+the mental stimulation of a puzzle game, providing hours of addictive,
+relaxing entertainment. Or something like that anyway. This is the full
+registered version of Stib, complete with five carefully graded levels, with
+individual saved hiscore tables. See the end of this file for the licence
+conditions.
+
+
+Instructions
+^^^^^^^^^^^^
+
+On running the game you will be presented with a title screen. Choose a
+difficulty level from the right-hand side (Practice is recommended to start
+with) and click Play.
+
+The main features of the playing screen are a grid of animated, colourful
+but suicidal creatures ('Stibs'), and a firing device ('Stib shooter') at
+the bottom centre. The Stib shooter is controlled using the mouse (it turns
+left and right and can be fired with any of the mouse buttons).
+
+The aim of the game is to eliminate all the Stibs from the playing area, for
+reasons which are currently unclear. They each have a built-in self destruct
+mechanism, but can only obtain enough power to activate it when they have
+three or more neighbours of the same colour, and only when hit by a moving
+Stib also of the same colour.
+
+These explosions frequently lead to some of the other Stibs becoming
+detached from the main group (which is always attached to the top of the
+playing area), and if this happens they will fall off the playing area and
+escape to safety (err, hang on, wasn't the aim of the game to kill them
+all?). If, however, the group touches the firey lake at the bottom of the
+screen, they will all be changed to evil demons (erm...) and your game will
+be over.
+
+To liven things up a bit, each time a Stib is fired the group becomes
+increasingly unstable, indicated by a blue thermometer at the bottom of the
+screen. They become critical when the thermometer fills up completely -
+causing the entire playing area to permanently shift down a row. Do not
+despair - when Stibs become detached, the thermometer goes down. The more
+that fall off in one go, the more the thermometer decreases.
+
+
+Scoring
+^^^^^^^
+
+You get 10 points for each Stib you shoot.
+You get 30 points for each Stib exploded.
+You get 60 points for each Stib detached.
+
+Bonuses: You get 1000pts ◊ level number for completing a level. You also get
+a bonus dependent on the number of Stibs used, which changes according to
+the difficulty of the level.
+
+
+Tints & Hips
+^^^^^^^^^^^^
+
+Once a type of Stib is eliminated, no more of that type will be given to
+shoot. However, there is a slight delay caused by the ênext Stibë system
+which makes things just a little bit tougher.
+
+Stibs can be bounced off the side of the playing area. Be sure to check all
+angles before you make unwise moves.
+
+Once the level is nearly complete, it is advisable to êhangë Stibs off a
+group of a different colour rather than the top of the screen. Youëll see
+why if you try it. Similar tactics can be used earlier in the game, which is
+especially useful on higher difficulty levels (which you as a privileged
+registered user can play).
+
+
+Licence
+^^^^^^^
+
+This code is freeware. You can redistribute it, but please don't remove or alter any files.
+
+
+History
+^^^^^^^
+
+<1.00       - development versions
+ 1.00       - first released version
+ 1.02       - hiscore table bugfix - name reduced from 20 letters to 12
+ 1.03 (doc) - DeskLib credit added
+ 1.04       - Full registered version
+ 1.05       - Full character set allowed in hiscore table (requested by Brian Smith)
+ 1.10ﬂ      - Some internal reorganisation (attempt to fix very rare very obscure bug)
+ 1.11       - Slightly improved response, some anomalies introduced in 1.10ﬂ fixed
+ 1.20       - Internal reorganisation, keyboard flush on hiscore table, can use
+              F12/Escape to end a game
+
+
+Contact
+^^^^^^^
+
+Current address: brown@cs.bris.ac.uk. If that doesn't work (after, I dunno, 2003 or so?) then try jules@eh.org, jules@digger.org, jules@dynarec.com, or try a web search.
+
+Thanks.

@@ -1,0 +1,25 @@
+
+fsound_base		EQU	&4E0C0
+FlexiSound_Add		EQU	fsound_base+0
+FlexiSound_Remove	EQU	fsound_base+1
+FlexiSound_Play		EQU	fsound_base+2
+
+	AREA |fsndcode$$code|, CODE, READONLY
+
+	EXPORT flexisound_add
+	EXPORT flexisound_remove
+	EXPORT flexisound_play
+
+flexisound_add
+	swi FlexiSound_Add
+	movs pc,r14
+
+flexisound_remove
+	swi FlexiSound_Remove
+	movs pc,r14
+
+flexisound_play
+	swi FlexiSound_Play
+	movs pc,r14
+
+	END

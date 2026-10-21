@@ -1,0 +1,11 @@
+|
+| Stib run file
+| © Monster Software, 1996
+|
+
+Set Stib$Path <Obey$Dir>.
+
+RMEnsure FlexiSound 1.00 RMLoad Stib:FlexiSound
+
+Wimpslot -min 320k -max 320k
+Run Stib:!RunImage

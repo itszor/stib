@@ -1,0 +1,580 @@
+
+OS_WriteC		EQU	&0
+OS_Byte			EQU	&6
+OS_File			EQU	&8
+OS_Mouse		EQU	&1C
+OS_ReadVduVariables	EQU	&31
+OS_ReadMonotonicTime	EQU	&42
+
+; some things which really should be defined as constants
+screen_width		EQU	320
+shift_1			EQU	8
+shift_2			EQU	6
+
+
+	AREA |satinfo$$data|, DATA
+
+sat_getscreenbaseinfo
+	DCD 0
+	DCD 0
+	DCD 0
+	DCD 0
+
+
+	AREA |satcode$$code|, CODE, READONLY
+
+	EXPORT sat_screenmode
+	EXPORT sat_getscreenbase
+	EXPORT sat_swapbanks
+	EXPORT sat_loadfile
+	EXPORT sat_savefile
+	EXPORT sat_mouseop
+	EXPORT sat_timeop
+	EXPORT sat_plot_32x32_noclip_unmask_word
+	EXPORT sat_plot_32x32_noclip_mask_word
+	EXPORT sat_plot_24x24_noclip_unmask_word
+	EXPORT sat_plot_12x24_noclip_unmask_word
+	EXPORT sat_plot_24x24_clip_mask_byte
+	EXPORT sat_plot_24x24_noclip_mask_byte
+	EXPORT sat_plot_24x24_noclip_mask_word
+	EXPORT sat_plot_16x16_noclip_mask_byte
+	EXPORT sat_plot_16x16_noclip_mask_word
+	EXPORT sat_plot_64x32_noclip_mask_word
+	EXPORT sat_plot_squiggled
+	EXPORT sat_plot_XxY_noclip_mask_byte
+	EXPORT sat_plot_barmiddle
+	EXPORT sat_plot_backdrop
+	EXPORT sat_resetscreen
+;	EXPORT sat_plot_32x32_unmask_scale, sat_plot_32x32_mask_scale
+;	EXPORT sat_plot_32x32_unmask_quad
+;	EXPORT sat_text
+;	EXPORT sat_plot_background
+;	EXPORT sat_plot_playfield
+;	EXPORT sat_miscfadeop
+
+
+
+sat_loadfile
+	stmfd sp!,{r4,r5,lr}
+	mov r2,r1
+	mov r1,r0
+	mov r0,#16
+	mov r3,#0
+	swi OS_File
+	ldmfd sp!,{r4,r5,pc}
+
+
+
+sat_savefile
+	stmfd sp!,{r4,r5,r6,lr}
+	mov r6,r2
+	mov r5,r1
+	mov r4,r0
+	mov r0,#10		; reason code (save)
+	mov r1,r4		; *name (r0 on entry)
+	mov r2,#&FF0
+	orr r2,r2,#&00D		; just to get &FFD into a reg!
+	mov r4,r5		; start address (r1 on entry)
+	add r5,r4,r6		; size (r2 on entry)
+	swi OS_File
+	ldmfd sp!,{r4,r5,r6,pc}
+
+
+
+
+sat_screenmode
+	mov r1,r0
+	mov r0,#22
+	swi OS_WriteC
+	mov r0,r1
+	swi OS_WriteC
+	movs pc,lr
+
+
+
+sat_getscreenbase
+	adrl r0,sat_getscreenbaseinfo
+	mov r1,#149	; hardware screen start
+	mvn r2,#0	; NOT -1
+	stmia r0,{r1,r2}
+	mov r1,r0
+	swi OS_ReadVduVariables
+	ldr r0,[r0]	; eech, but apparently ok
+	movs pc,lr
+
+
+
+; r0 - current viewing bank
+sat_swapbanks
+	mov r3,r0
+	mov r0,#19
+	swi OS_Byte
+	mov r0,#112
+	mov r1,r3
+	swi OS_Byte
+	rsb r3,r3,#3
+	mov r0,#113
+	mov r1,r3
+	swi OS_Byte
+	mov r0,r3
+	movs pc,lr
+
+
+
+; r0 - screen base
+sat_resetscreen
+	mov r3,r0
+	mov r0,#112
+	mov r1,#1
+	swi OS_Byte
+	mov r0,#113
+	mov r1,#1
+	swi OS_Byte
+	mov r1,#0
+	mov r2,#160*1024
+reset_loop
+	str r1,[r3],#4
+	subs r2,r2,#4
+	bgt reset_loop
+	movs pc,lr
+
+
+
+; r0 - &x
+; r1 - &y
+; r2 - &button
+sat_mouseop
+	stmfd sp!,{r4-r6,lr}
+	mov r4,r0
+	mov r5,r1
+	mov r6,r2
+	swi OS_Mouse
+	str r0,[r4]
+	str r1,[r5]
+	str r2,[r6]
+	ldmfd sp!,{r4-r6,pc}
+
+
+
+; exit r0 - time in cs
+sat_timeop
+	swi OS_ReadMonotonicTime
+	movs pc,r14
+
+
+
+; r0 - pointer to sprite data
+; r1 - pointer to screen start
+; r2 - x pos
+; r3 - y pos
+sat_plot_32x32_noclip_unmask_word
+	stmfd sp!,{r4-r12,lr}
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r4,r4,r2			; r4 points at corner address
+	mov r3,#32			; vertical size
+plot_32x32_n_u_w_loop_0
+	ldmia r0!,{r5-r12}		; get 32 pixels
+	stmia r4,{r5-r12}		; put 32 pixels
+	add r4,r4,#screen_width		; screen width
+	subs r3,r3,#1
+	bgt plot_32x32_n_u_w_loop_0
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+; r0 - sprite
+; r1 - screen
+sat_plot_backdrop
+	stmfd sp!,{r4-r12,lr}
+	mov r2,#32
+	mov r3,r1
+
+plot_backdrop_y
+	ldmia r0!,{r5-r12}		; get 32 pixels
+	mov r4,#8
+
+plot_backdrop_largey
+	mov r1,r3
+
+	stmia r1!,{r5-r12}		; put 32 pixels 0
+	stmia r1!,{r5-r12}		; put 32 pixels 1
+	stmia r1!,{r5-r12}		; put 32 pixels 2
+	stmia r1!,{r5-r12}		; put 32 pixels 3
+	stmia r1!,{r5-r12}		; put 32 pixels 4
+	stmia r1!,{r5-r12}		; put 32 pixels 5
+	stmia r1!,{r5-r12}		; put 32 pixels 6
+	stmia r1!,{r5-r12}		; put 32 pixels 7
+	stmia r1!,{r5-r12}		; put 32 pixels 8
+	stmia r1!,{r5-r12}		; put 32 pixels 9
+
+	add r3,r3,#10240
+	subs r4,r4,#1
+	bgt plot_backdrop_largey
+
+	sub r3,r3,#320*32*8
+	add r3,r3,#320
+	subs r2,r2,#1
+	bgt plot_backdrop_y
+
+	ldmfd r13!,{r4-r12,pc}
+
+
+
+; r0 - pointer to sprite data
+; r1 - pointer to screen start
+; r2 - x pos
+; r3 - y pos
+sat_plot_24x24_noclip_unmask_word
+	stmfd sp!,{r4-r12,lr}
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r4,r4,r2			; r4 points at corner address
+	mov r3,#24			; vertical size
+plot_24x24_n_u_w_loop_0
+	ldmia r0!,{r5-r10}		; get 24 pixels
+	stmia r4,{r5-r10}		; put 24 pixels
+	add r4,r4,#screen_width		; screen width
+	subs r3,r3,#1
+	bgt plot_24x24_n_u_w_loop_0
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+; r0 - pointer to sprite data
+; r1 - pointer to screen start
+; r2 - x pos
+; r3 - y pos
+sat_plot_12x24_noclip_unmask_word
+	stmfd sp!,{r4-r12,lr}
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r4,r4,r2			; r4 points at corner address
+	mov r3,#24			; vertical size
+plot_12x24_n_u_w_loop_0
+	ldmia r0!,{r5-r7}		; get 12 pixels
+	stmia r4,{r5-r7}		; put 12 pixels
+	add r4,r4,#screen_width		; screen width
+	subs r3,r3,#1
+	bgt plot_12x24_n_u_w_loop_0
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+; r0 - pointer to sprite data (+mask data)
+; r1 - pointer to screen start
+; r2 - x pos
+; r3 - y pos
+sat_plot_24x24_noclip_mask_word
+	stmfd sp!,{r4-r12,lr}
+	bic r2,r2,#3
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r2,r4,r2			; r4 points at corner address
+	add r1,r0,#576			; 24*24, ie start of mask data
+	mov r12,#24
+plot_24x24_n_m_w_loop_0
+	ldmia r0!,{r3,r4,r5}	; sprite data
+	ldmia r1!,{r6,r7,r8}	; mask data
+	ldmia r2,{r9,r10,r11}	; from screen
+	and r9,r9,r6
+	and r10,r10,r7
+	and r11,r11,r8
+	orr r9,r9,r3
+	orr r10,r10,r4
+	orr r11,r11,r5
+	stmia r2!,{r9,r10,r11}	; all that for 12 measly pixels!
+
+	ldmia r0!,{r3,r4,r5}	; sprite data
+	ldmia r1!,{r6,r7,r8}	; mask data
+	ldmia r2,{r9,r10,r11}	; from screen
+	and r9,r9,r6
+	and r10,r10,r7
+	and r11,r11,r8
+	orr r9,r9,r3
+	orr r10,r10,r4
+	orr r11,r11,r5
+	stmia r2!,{r9,r10,r11}		; all that for 12 measly pixels!
+	add r2,r2,#screen_width-24	; muddle out new row start
+	subs r12,r12,#1
+	bgt plot_24x24_n_m_w_loop_0
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+; r0 sprite data
+; r1 screen base
+; r2 x pos
+; r3 y pos
+sat_plot_24x24_noclip_mask_byte
+	stmfd sp!,{r4-r6,lr}
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r4,r4,r2			; r4 points at corner address
+	mov r2,#24
+sat_24x24_n_m_b_loop_0
+	mov r5,r4
+	mov r3,#24
+sat_24x24_n_m_b_loop_1
+	ldrb r6,[r0],#1
+	cmp r6,#0
+	strneb r6,[r5],#1	; makes no difference about the ...],#1
+	addeq r5,r5,#1
+	subs r3,r3,#1
+	bgt sat_24x24_n_m_b_loop_1
+	add r4,r4,#screen_width		; screen width
+	subs r2,r2,#1
+	bgt sat_24x24_n_m_b_loop_0
+	ldmfd sp!,{r4-r6,pc}
+
+
+
+; r0 sprite
+; r1 screen
+; r2 x
+; r3 y
+sat_plot_24x24_clip_mask_byte
+	movs pc,r14
+
+
+
+; r0 sprite
+; r1 screen
+; r2 x
+; r3 y
+sat_plot_16x16_noclip_mask_word
+	stmfd sp!,{r4-r12,lr}
+	bic r2,r2,#3
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r2,r4,r2			; r4 points at corner address
+	add r1,r0,#256			; 16*16, ie start of mask data
+	mov r12,#16
+plot_16x16_n_m_w_loop_0
+	ldmia r0!,{r3,r4}	; sprite data
+	ldmia r1!,{r6,r7}	; mask data
+	ldmia r2,{r9,r10}	; from screen
+	and r9,r9,r6
+	and r10,r10,r7
+	orr r9,r9,r3
+	orr r10,r10,r4
+	stmia r2!,{r9,r10}	; all that for 12 measly pixels!
+
+	ldmia r0!,{r3,r4}	; sprite data
+	ldmia r1!,{r6,r7}	; mask data
+	ldmia r2,{r9,r10}	; from screen
+	and r9,r9,r6
+	and r10,r10,r7
+	orr r9,r9,r3
+	orr r10,r10,r4
+	stmia r2!,{r9,r10}		; all that for 12 measly pixels!
+	add r2,r2,#screen_width-16	; muddle out new row start
+	subs r12,r12,#1
+	bgt plot_16x16_n_m_w_loop_0
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+; r0 - sprite base
+; r1 - screen base
+; r2 - x pos
+; r3 - y pos
+sat_plot_16x16_noclip_mask_byte
+	stmfd sp!,{r4-r7,lr}
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r4,r4,r2			; r4 points at corner address
+	mov r2,#16
+sat_16x16_n_m_b_loop_0
+	mov r5,r4
+	mov r3,#16
+sat_16x16_n_m_b_loop_1
+	ldr r7,[r0],#4
+
+	ands r6,r7,#255
+	strneb r6,[r5]
+	add r5,r5,#1
+
+	mov r7,r7,lsr #8
+	ands r6,r7,#255		; PROBABLY not necessary but has 's'
+	strneb r6,[r5]		; extension which affx this line
+	add r5,r5,#1
+
+	mov r7,r7,lsr #8
+	ands r6,r7,#255
+	strneb r6,[r5]
+	add r5,r5,#1
+
+	mov r7,r7,lsr #8
+	ands r6,r7,#255
+	strneb r6,[r5]
+	add r5,r5,#1		; using ldr probably isn't much faster...
+
+	subs r3,r3,#4
+	bgt sat_16x16_n_m_b_loop_1
+	add r4,r4,#screen_width	; screen width
+	subs r2,r2,#1
+	bgt sat_16x16_n_m_b_loop_0
+	ldmfd sp!,{r4-r7,pc}
+
+
+
+; r0 - sprite data
+; r1 - screen
+; r2 - x
+; r3 - y
+sat_plot_64x32_noclip_mask_word
+	stmfd sp!,{r4-r11,lr}
+	bic r2,r2,#3
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r2,r4,r2			; r2 points at corner address
+	add r1,r0,#2048			; 64*32, ie start of mask data
+	mov r11,#32
+plot_64x32_n_m_w_loop_0
+	mov r9,r2
+	mov r10,#8
+plot_64x32_n_m_w_loop_1
+	ldmia r0!,{r3,r4}	; sprite data
+	ldmia r1!,{r5,r6}	; mask data
+	ldmia r9,{r7,r8}	; from screen
+	and r7,r7,r5
+	and r8,r8,r6
+	orr r7,r7,r3
+	orr r8,r8,r4
+	stmia r9!,{r7,r8}	; all that for 8 measly pixels!
+	subs r10,r10,#1
+	bgt plot_64x32_n_m_w_loop_1
+	add r2,r2,#screen_width
+	subs r11,r11,#1
+	bgt plot_64x32_n_m_w_loop_0
+	ldmfd sp!,{r4-r11,pc}
+
+
+
+; r0 - sprite data
+; r1 - screen
+; r2 - x
+; r3 - y
+sat_plot_32x32_noclip_mask_word
+	stmfd sp!,{r4-r11,lr}
+	bic r2,r2,#3
+	add r4,r1,r3,lsl #shift_1
+	add r4,r4,r3,lsl #shift_2	; total x320
+	add r2,r4,r2			; r2 points at corner address
+	add r1,r0,#1024			; 32*32, ie start of mask data
+	mov r11,#32
+plot_32x32_n_m_w_loop_0
+	mov r9,r2
+	mov r10,#4
+plot_32x32_n_m_w_loop_1
+	ldmia r0!,{r3,r4}	; sprite data
+	ldmia r1!,{r5,r6}	; mask data
+	ldmia r9,{r7,r8}	; from screen
+	and r7,r7,r5
+	and r8,r8,r6
+	orr r7,r7,r3
+	orr r8,r8,r4
+	stmia r9!,{r7,r8}	; all that for 8 measly pixels!
+	subs r10,r10,#1
+	bgt plot_32x32_n_m_w_loop_1
+	add r2,r2,#screen_width
+	subs r11,r11,#1
+	bgt plot_32x32_n_m_w_loop_0
+	ldmfd sp!,{r4-r11,pc}
+
+
+
+; a bit of a general one
+; r0 - *sprite (incl. size data)
+; r1 - *screen
+; r2 - x pos
+; r3 - y pos
+sat_plot_XxY_noclip_mask_byte
+	stmfd sp!,{r4-r9,lr}
+	ldmia r0!,{r4,r5}		; x size from sprite data
+	add r6,r1,r3,lsl #shift_1
+	add r6,r6,r3,lsl #shift_2	; total x320
+	add r6,r6,r2			; r6 points at corner address
+plot_XxY_n_m_b_loop_0
+	mov r7,r6			; screen address copy
+	mov r8,r4			; x size (r5 remains y size)
+plot_XxY_n_m_b_loop_1
+	ldrb r9,[r0],#1
+	cmp r9,#0
+	strneb r9,[r7],#1
+	addeq r7,r7,#1
+	subs r8,r8,#1
+	bgt plot_XxY_n_m_b_loop_1
+	add r6,r6,#screen_width		; screen width
+	subs r5,r5,#1
+	bgt plot_XxY_n_m_b_loop_0
+	ldmfd sp!,{r4-r9,pc}
+
+
+
+; r0 - (*infoblock)
+;	+0 (r0) sprite
+;	+4 (r1) screen
+;	+8 (r2) x pos
+;      +12 (r3) y pos
+;      +16 (r4) length reqd.
+sat_plot_barmiddle
+	stmfd sp!,{r4-r9,lr}
+	ldmia r0,{r0-r4}
+	ldr r9,[r0,#4]			; y size of bar
+	add r0,r0,#8			; skip size info
+	add r6,r1,r3,lsl #shift_1
+	add r6,r6,r3,lsl #shift_2	; total x320
+	add r6,r6,r2			; r6 points at corner address
+barplot_loop_0
+	mov r5,r6		; screen pos
+	mov r7,r4		; length
+	ldrb r8,[r0],#4		; read one, move on [assumes 4 bytes width]
+barplot_loop_1
+	strb r8,[r5],#1
+	subs r7,r7,#1
+	bgt barplot_loop_1
+	add r6,r6,#screen_width
+	subs r9,r9,#1
+	bgt barplot_loop_0
+	ldmfd sp!,{r4-r9,pc}
+
+
+
+; r0 *sprite
+; r1 *screen
+; r2 *infoblock
+;    x pos (left)
+;    y pos (top)
+;    table x24 of:
+;      start (pixel x-offset)
+;      increment .@16
+sat_plot_squiggled
+	stmfd sp!,{r4-r12,lr}
+	ldmia r2!,{r3,r4}	; r3 x, r4 y
+	add r5,r1,r4,lsl #shift_1
+	add r5,r5,r4,lsl #shift_2	; total x320
+	add r5,r5,r3			; r5 points at corner address
+	mov r8,#24
+squiggle_yloop
+	ldmia r2!,{r3,r4}		; r3 start, r4 inc
+	add r6,r5,r3
+	mov r1,#0
+squiggle_xloop
+	ldrb r7,[r0,r1,asr #16]		; r0 sprite, r1 x-offset in sprite
+	add r1,r1,r4			; increment source sprite x-offset
+	cmp r7,#0
+	strneb r7,[r6],#1			; put pixel, screen_x++
+	addeq r6,r6,#1
+	cmp r1,#24*65536
+	blt squiggle_xloop
+	add r5,r5,#screen_width
+	add r0,r0,#24			; inc source sprite line
+	subs r8,r8,#1
+	bgt squiggle_yloop
+	ldmfd sp!,{r4-r12,pc}
+
+
+
+	END

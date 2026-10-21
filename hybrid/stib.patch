@@ -1,0 +1,78 @@
+diff -u a/play.c b/play.c
+--- a/play.c	2026-10-21 11:34:40.670028191 +0100
++++ b/play.c	2026-10-21 11:34:40.690945631 +0100
+@@ -117,10 +117,10 @@
+         if (array[xloop][yloop].info.full)
+         {
+           if (!array[xloop][yloop].info.exploding)
+-            sprite=(int*)((int)lev.sparea+(array[xloop][yloop].info.sprite
++            sprite=(int*)((intptr_t)lev.sparea+(array[xloop][yloop].info.sprite
+               +8*array[xloop][yloop].info.diff)*lev.sep);
+           else
+-            sprite=(int*)((int)lev.sparea+(16+(array[xloop][yloop].info.explodesp/2))
++            sprite=(int*)((intptr_t)lev.sparea+(16+(array[xloop][yloop].info.explodesp/2))
+               *lev.sep);
+ 
+           (*lev.wordplotter)(sprite, screen,
+@@ -152,10 +152,10 @@
+         if (array[xloop][yloop].info.full)
+         {
+           if (!array[xloop][yloop].info.exploding)
+-            sprite=(int*)((int)lev.sparea+(array[xloop][yloop].info.sprite
++            sprite=(int*)((intptr_t)lev.sparea+(array[xloop][yloop].info.sprite
+               +8*array[xloop][yloop].info.diff)*lev.sep);
+           else
+-            sprite=(int*)((int)lev.sparea+(16+(array[xloop][yloop].info.explodesp)/2)
++            sprite=(int*)((intptr_t)lev.sparea+(16+(array[xloop][yloop].info.explodesp)/2)
+               *lev.sep);
+ 
+           (*lev.wordplotter)(sprite, screen,
+@@ -625,7 +625,7 @@
+   static ipoint current={0,0}, old={0,0}, nextpos={0,0};
+   register int xloop, yloop;
+   int min;
+-  int *previous=(int*)((int)lev.sparea+tcell.cell.current*lev.sep);
++  int *previous=(int*)((intptr_t)lev.sparea+tcell.cell.current*lev.sep);
+ 
+   do {
+     nextpos.x=(int)(tcell.movepos.x+tcell.movedir.x*lev.lookahead);
+diff -u a/play.h b/play.h
+--- a/play.h	2026-10-21 11:34:40.669977154 +0100
++++ b/play.h	2026-10-21 11:34:40.690798898 +0100
+@@ -1,15 +1,15 @@
+ #define playgrid_xsize 20
+ #define playgrid_ysize 16
+ #define rad(N) ((N)/57.2957795)
+-#define maskindex(B,N,X,Y) ((int*)((int)(B)+(N)*(X)*(Y)*2))
+-#define nomaskindex(B,N,X,Y) ((int*)((int)(B)+(N)*(X)*(Y)))
+-#define nomaskarb(B,N) ((int*)((int)(B)+((int*)(B))[(N)]))
++#define maskindex(B,N,X,Y) ((int*)((intptr_t)(B)+(N)*(X)*(Y)*2))
++#define nomaskindex(B,N,X,Y) ((int*)((intptr_t)(B)+(N)*(X)*(Y)))
++#define nomaskarb(B,N) ((int*)((intptr_t)(B)+((int*)(B))[(N)]))
+ #define cposx(X,Y) (lev.indent.x+(X)*lev.blocksize.x+((Y) & 1 ? lev.halfsizex : 0))
+ #define cposy(Y,S) (lev.indent.y+(Y)*lev.blocksize.y+(S))
+ #define shootspeed 3
+ 
+ #define buf1(S) (S)
+-#define buf2(S) ((int*)((int)(S)+81920))
++#define buf2(S) ((int*)((intptr_t)(S)+81920))
+ 
+ #ifndef true
+ #define true 1
+diff -u a/sat.c b/sat.c
+--- a/sat.c	2026-10-21 11:34:40.670072527 +0100
++++ b/sat.c	2026-10-21 11:34:40.691006627 +0100
+@@ -25,11 +25,11 @@
+   size=File_Size(name);
+   if (size==0) exit(1);
+   *area=malloc(size);
+-  if ((int)*area<0x8000) exit(1);
++  if ((int)hy_arm(*area)<0x8000) exit(1);
+   sat_loadfile(name, *area);
+ }
+ 
+-#define charaddr(N) ((int*)((int)spriteareas.gamefont+forw[string[(N)]]))
++#define charaddr(N) ((int*)((intptr_t)spriteareas.gamefont+forw[string[(N)]]))
+ 
+ void sat_printf(int *font, int *screen, int x, int y, align ment, char *format, ...)
+ {

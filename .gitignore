@@ -1,0 +1,17 @@
+# build products
+hybrid/build/
+*.o
+hybrid/stib
+hybrid/stib-full
+# run outputs
+recomp.*
+untranslated.log
+vidc.log
+screenshot-*.bmp
+savedata/
+core
+core.*
+# the SDL port's build products
+xstib/xstib/xstib
+# the release as distributed (stib/ is its contents)
+xstib/stib_final.zip
