@@ -157,501 +157,501 @@ void Flexisound_18001ec(uint32_t e)
     default: bad_entry(0x18001ecu, e); return;
     }
 L_18001ec:
-    I(0x18001ecu);
+    I_(0x18001ecu);
     LDR_(12, R[12], 0x0u, 1, 1, 0, -1);
 L_18001f0:
-    I(0x18001f0u);
+    I_(0x18001f0u);
     DP_CMP(R[11], 0x8u);
 L_18001f4:
-    I(0x18001f4u);
+    I_(0x18001f4u);
     if (C_CC) {
         SETPC(0x18001fcu + SH_LSL(R[11], 2), 0);
         LEAVE();
     }
 L_18001f8:
-    I(0x18001f8u);
+    I_(0x18001f8u);
     goto L_180021c;
 L_18001fc:
-    I(0x18001fcu);
+    I_(0x18001fcu);
     goto L_1800240;
 L_1800200:
-    I(0x1800200u);
+    I_(0x1800200u);
     goto L_18002e0;
 L_1800204:
-    I(0x1800204u);
+    I_(0x1800204u);
     goto L_1800310;
 L_1800208:
-    I(0x1800208u);
+    I_(0x1800208u);
     goto L_1800368;
 L_180020c:
-    I(0x180020cu);
+    I_(0x180020cu);
     goto L_180037c;
 L_1800210:
-    I(0x1800210u);
+    I_(0x1800210u);
     goto L_18003a4;
 L_1800214:
-    I(0x1800214u);
+    I_(0x1800214u);
     goto L_18003f8;
 L_1800218:
-    I(0x1800218u);
+    I_(0x1800218u);
     goto L_1800450;
 L_180021c:
-    I(0x180021cu);
+    I_(0x180021cu);
     DP_ADD(0, 0x1800224u, 0x10u);
 L_1800220:
-    I(0x1800220u);
+    I_(0x1800220u);
     DP_MOV(1, 0x0u);
 L_1800224:
-    I(0x1800224u);
+    I_(0x1800224u);
     DP_MOV(2, 0x0u);
 L_1800228:
-    I(0x1800228u);
+    I_(0x1800228u);
     DP_SUB(4, 0x1800230u, 0x204u);
 L_180022c:
-    I(0x180022cu);
+    I_(0x180022cu);
     SWI(0x61506u, 0x1800230u);
 L_1800230:
-    I(0x1800230u);
+    I_(0x1800230u);
     SETPC(R[14] | 0x20000u, 1);
     LEAVE();
     JUMP(0x1800234u);
 L_1800240:
-    I(0x1800240u);
+    I_(0x1800240u);
     STM_BEGIN(R[13] - 40) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[9]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_1800244:
-    I(0x1800244u);
+    I_(0x1800244u);
     DP_MOV(8, R[0]);
 L_1800248:
-    I(0x1800248u);
+    I_(0x1800248u);
     DP_ADD(2, R[12], 0x54u);
 L_180024c:
-    I(0x180024cu);
+    I_(0x180024cu);
     DP_MOV(3, 0x0u);
 L_1800250:
-    I(0x1800250u);
+    I_(0x1800250u);
     DP_MVN(9, 0x0u);
 L_1800254:
-    I(0x1800254u);
+    I_(0x1800254u);
     LDR_(4, R[2], SH_LSL(R[3], 2), 1, 1, 0, -1);
 L_1800258:
-    I(0x1800258u);
+    I_(0x1800258u);
     DP_CMP(R[4], 0x0u);
 L_180025c:
-    I(0x180025cu);
+    I_(0x180025cu);
     if (C_EQ) {
         DP_MOV(9, R[3]);
     }
 L_1800260:
-    I(0x1800260u);
+    I_(0x1800260u);
     if (C_EQ) {
         goto L_1800270;
     }
 L_1800264:
-    I(0x1800264u);
+    I_(0x1800264u);
     DP_ADD(3, R[3], 0x1u);
 L_1800268:
-    I(0x1800268u);
+    I_(0x1800268u);
     DP_CMP(R[3], 0x20u);
 L_180026c:
-    I(0x180026cu);
+    I_(0x180026cu);
     if (C_LT) {
         goto L_1800254;
     }
 L_1800270:
-    I(0x1800270u);
+    I_(0x1800270u);
     DP_CMP(R[9], 0x0u);
 L_1800274:
-    I(0x1800274u);
+    I_(0x1800274u);
     if (C_LT) {
         DP_MVN(0, 0x0u);
     }
 L_1800278:
-    I(0x1800278u);
+    I_(0x1800278u);
     if (C_LT) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_180027c:
-    I(0x180027cu);
+    I_(0x180027cu);
     DP_MOV(0, 0x11u);
 L_1800280:
-    I(0x1800280u);
+    I_(0x1800280u);
     DP_MOV(1, R[8]);
 L_1800284:
-    I(0x1800284u);
+    I_(0x1800284u);
     SWI(0x8u, 0x1800288u);
 L_1800288:
-    I(0x1800288u);
+    I_(0x1800288u);
     DP_ADD(3, R[4], 0x8u);
 L_180028c:
-    I(0x180028cu);
+    I_(0x180028cu);
     DP_BIC(3, R[3], 0x3u);
 L_1800290:
-    I(0x1800290u);
+    I_(0x1800290u);
     DP_MOV(0, 0x6u);
 L_1800294:
-    I(0x1800294u);
+    I_(0x1800294u);
     SWI(0x1eu, 0x1800298u);
 L_1800298:
-    I(0x1800298u);
+    I_(0x1800298u);
     STR_(R[4], R[2], 0x0u, 1, 1, 0, -1);
 L_180029c:
-    I(0x180029cu);
+    I_(0x180029cu);
     DP_ADD(5, R[12], 0x54u);
 L_18002a0:
-    I(0x18002a0u);
+    I_(0x18002a0u);
     STR_(R[2], R[5], SH_LSL(R[9], 2), 1, 1, 0, -1);
 L_18002a4:
-    I(0x18002a4u);
+    I_(0x18002a4u);
     DP_MOV(0, 0x10u);
 L_18002a8:
-    I(0x18002a8u);
+    I_(0x18002a8u);
     DP_MOV(1, R[8]);
 L_18002ac:
-    I(0x18002acu);
+    I_(0x18002acu);
     DP_ADD(2, R[2], 0x4u);
 L_18002b0:
-    I(0x18002b0u);
+    I_(0x18002b0u);
     DP_MOV(3, 0x0u);
 L_18002b4:
-    I(0x18002b4u);
+    I_(0x18002b4u);
     SWI(0x20008u, 0x18002b8u);
 L_18002b8:
-    I(0x18002b8u);
+    I_(0x18002b8u);
     DP_MOV(0, R[9]);
 L_18002bc:
-    I(0x18002bcu);
+    I_(0x18002bcu);
     if (C_VC) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_18002c0:
-    I(0x18002c0u);
+    I_(0x18002c0u);
     DP_ADD(5, R[12], 0x54u);
 L_18002c4:
-    I(0x18002c4u);
+    I_(0x18002c4u);
     LDR_(2, R[5], SH_LSL(R[9], 2), 1, 1, 0, -1);
 L_18002c8:
-    I(0x18002c8u);
+    I_(0x18002c8u);
     DP_MOV(0, 0x7u);
 L_18002cc:
-    I(0x18002ccu);
+    I_(0x18002ccu);
     SWI(0x2001eu, 0x18002d0u);
 L_18002d0:
-    I(0x18002d0u);
+    I_(0x18002d0u);
     DP_MOV(0, 0x0u);
 L_18002d4:
-    I(0x18002d4u);
+    I_(0x18002d4u);
     STR_(R[0], R[5], SH_LSL(R[9], 2), 1, 1, 0, -1);
 L_18002d8:
-    I(0x18002d8u);
+    I_(0x18002d8u);
     DP_MVN(0, 0x0u);
 L_18002dc:
-    I(0x18002dcu);
+    I_(0x18002dcu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_PC(0) XFER_END;
     LEAVE();
 L_18002e0:
-    I(0x18002e0u);
+    I_(0x18002e0u);
     STM_BEGIN(R[13] - 28) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[14]) R[13] = R[13] - 28; XFER_END;
 L_18002e4:
-    I(0x18002e4u);
+    I_(0x18002e4u);
     DP_MOV(5, R[0]);
 L_18002e8:
-    I(0x18002e8u);
+    I_(0x18002e8u);
     DP_ADD(3, R[12], 0x54u);
 L_18002ec:
-    I(0x18002ecu);
+    I_(0x18002ecu);
     LDR_(2, R[3], SH_LSL(R[0], 2), 1, 1, 0, -1);
 L_18002f0:
-    I(0x18002f0u);
+    I_(0x18002f0u);
     DP_CMP(R[2], 0x0u);
 L_18002f4:
-    I(0x18002f4u);
+    I_(0x18002f4u);
     if (C_EQ) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 28;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_18002f8:
-    I(0x18002f8u);
+    I_(0x18002f8u);
     DP_MOV(0, 0x7u);
 L_18002fc:
-    I(0x18002fcu);
+    I_(0x18002fcu);
     SWI(0x1eu, 0x1800300u);
 L_1800300:
-    I(0x1800300u);
+    I_(0x1800300u);
     DP_ADD(3, R[12], 0x54u);
 L_1800304:
-    I(0x1800304u);
+    I_(0x1800304u);
     DP_MOV(2, 0x0u);
 L_1800308:
-    I(0x1800308u);
+    I_(0x1800308u);
     STR_(R[2], R[3], SH_LSL(R[5], 2), 1, 1, 0, -1);
 L_180030c:
-    I(0x180030cu);
+    I_(0x180030cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 28;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_PC(0) XFER_END;
     LEAVE();
 L_1800310:
-    I(0x1800310u);
+    I_(0x1800310u);
     STM_BEGIN(R[13] - 40) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_1800314:
-    I(0x1800314u);
+    I_(0x1800314u);
     STR_(R[12], 0x180031cu, 0x138u, 1, 1, 0, -1);
 L_1800318:
-    I(0x1800318u);
+    I_(0x1800318u);
     DP_MOV(5, R[1]);
 L_180031c:
-    I(0x180031cu);
+    I_(0x180031cu);
     DP_MOV(6, R[2]);
 L_1800320:
-    I(0x1800320u);
+    I_(0x1800320u);
     DP_MOV(7, R[3]);
 L_1800324:
-    I(0x1800324u);
+    I_(0x1800324u);
     DP_ADD(4, R[12], 0x54u);
 L_1800328:
-    I(0x1800328u);
+    I_(0x1800328u);
     LDR_(2, R[4], SH_LSL(R[0], 2), 1, 1, 0, -1);
 L_180032c:
-    I(0x180032cu);
+    I_(0x180032cu);
     DP_ADD(8, R[12], SH_LSL(R[1], 2));
 L_1800330:
-    I(0x1800330u);
+    I_(0x1800330u);
     DP_SUB(8, R[8], 0x4u);
 L_1800334:
-    I(0x1800334u);
+    I_(0x1800334u);
     DP_CMP(R[2], 0x0u);
 L_1800338:
-    I(0x1800338u);
+    I_(0x1800338u);
     if (C_EQ) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_180033c:
-    I(0x180033cu);
+    I_(0x180033cu);
     R[14] = 0x1800340u | PSR();
     CALL(Flexisound_18001ec, 0x1800368u, 0x1800340u);
 L_1800340:
-    I(0x1800340u);
+    I_(0x1800340u);
     DP_SUB(3, R[3], 0x10u);
 L_1800344:
-    I(0x1800344u);
+    I_(0x1800344u);
     STR_(R[3], R[8], 0x28u, 1, 1, 0, -1);
 L_1800348:
-    I(0x1800348u);
+    I_(0x1800348u);
     DP_ADD(2, R[2], 0x4u);
 L_180034c:
-    I(0x180034cu);
+    I_(0x180034cu);
     STR_(R[2], R[8], 0x8u, 1, 1, 0, -1);
 L_1800350:
-    I(0x1800350u);
+    I_(0x1800350u);
     DP_MOV(0, R[5]);
 L_1800354:
-    I(0x1800354u);
+    I_(0x1800354u);
     DP_MOV(1, R[6]);
 L_1800358:
-    I(0x1800358u);
+    I_(0x1800358u);
     DP_MOV(2, R[7]);
 L_180035c:
-    I(0x180035cu);
+    I_(0x180035cu);
     DP_MOV(3, 0xffu);
 L_1800360:
-    I(0x1800360u);
+    I_(0x1800360u);
     SWI(0x60189u, 0x1800364u);
 L_1800364:
-    I(0x1800364u);
+    I_(0x1800364u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_PC(0) XFER_END;
     LEAVE();
 L_1800368:
-    I(0x1800368u);
+    I_(0x1800368u);
     STM_BEGIN(R[13] - 12) STM_V(R[1]) STM_V(R[2]) STM_V(R[14]) R[13] = R[13] - 12; XFER_END;
 L_180036c:
-    I(0x180036cu);
+    I_(0x180036cu);
     DP_ADD(1, R[12], 0x54u);
 L_1800370:
-    I(0x1800370u);
+    I_(0x1800370u);
     LDR_(2, R[1], SH_LSL(R[0], 2), 1, 1, 0, -1);
 L_1800374:
-    I(0x1800374u);
+    I_(0x1800374u);
     LDR_(3, R[2], 0x0u, 1, 1, 0, -1);
     JUMP(0x1800378u);
 L_180037c:
-    I(0x180037cu);
+    I_(0x180037cu);
     STM_BEGIN(R[13] - 36) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[14]) R[13] = R[13] - 36; XFER_END;
 L_1800380:
-    I(0x1800380u);
+    I_(0x1800380u);
     DP_MOV(6, R[0]);
 L_1800384:
-    I(0x1800384u);
+    I_(0x1800384u);
     DP_MOV(7, R[1]);
 L_1800388:
-    I(0x1800388u);
+    I_(0x1800388u);
     R[14] = 0x180038cu | PSR();
     CALL(Flexisound_18001ec, 0x1800368u, 0x180038cu);
 L_180038c:
-    I(0x180038cu);
+    I_(0x180038cu);
     DP_ADD(5, R[12], 0x54u);
 L_1800390:
-    I(0x1800390u);
+    I_(0x1800390u);
     LDR_(2, R[5], SH_LSL(R[6], 2), 1, 1, 0, -1);
 L_1800394:
-    I(0x1800394u);
+    I_(0x1800394u);
     DP_MOV(1, R[7]);
 L_1800398:
-    I(0x1800398u);
+    I_(0x1800398u);
     DP_MOV(0, 0x2u);
 L_180039c:
-    I(0x180039cu);
+    I_(0x180039cu);
     SWI(0xcu, 0x18003a0u);
 L_18003a0:
-    I(0x18003a0u);
+    I_(0x18003a0u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 36;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_PC(0) XFER_END;
     LEAVE();
 L_18003a4:
-    I(0x18003a4u);
+    I_(0x18003a4u);
     STM_BEGIN(R[13] - 40) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_18003a8:
-    I(0x18003a8u);
+    I_(0x18003a8u);
     DP_MOV(6, R[0]);
 L_18003ac:
-    I(0x18003acu);
+    I_(0x18003acu);
     DP_MOV(7, R[1]);
 L_18003b0:
-    I(0x18003b0u);
+    I_(0x18003b0u);
     DP_MOV(8, R[2]);
 L_18003b4:
-    I(0x18003b4u);
+    I_(0x18003b4u);
     DP_ADD(4, R[12], 0x54u);
 L_18003b8:
-    I(0x18003b8u);
+    I_(0x18003b8u);
     LDR_(0, R[4], SH_LSL(R[6], 2), 1, 1, 0, -1);
 L_18003bc:
-    I(0x18003bcu);
+    I_(0x18003bcu);
     DP_CMP(R[0], 0x0u);
 L_18003c0:
-    I(0x18003c0u);
+    I_(0x18003c0u);
     if (C_EQ) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_18003c4:
-    I(0x18003c4u);
+    I_(0x18003c4u);
     DP_MOV(3, R[8]);
 L_18003c8:
-    I(0x18003c8u);
+    I_(0x18003c8u);
     DP_MOV(0, 0x6u);
 L_18003cc:
-    I(0x18003ccu);
+    I_(0x18003ccu);
     SWI(0x1eu, 0x18003d0u);
 L_18003d0:
-    I(0x18003d0u);
+    I_(0x18003d0u);
     if (C_VS) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_18003d4:
-    I(0x18003d4u);
+    I_(0x18003d4u);
     DP_MOV(5, R[2]);
 L_18003d8:
-    I(0x18003d8u);
+    I_(0x18003d8u);
     DP_MOV(0, 0x4u);
 L_18003dc:
-    I(0x18003dcu);
+    I_(0x18003dcu);
     DP_MOV(1, R[7]);
 L_18003e0:
-    I(0x18003e0u);
+    I_(0x18003e0u);
     DP_MOV(2, R[5]);
 L_18003e4:
-    I(0x18003e4u);
+    I_(0x18003e4u);
     DP_MOV(3, R[8]);
 L_18003e8:
-    I(0x18003e8u);
+    I_(0x18003e8u);
     SWI(0xcu, 0x18003ecu);
 L_18003ec:
-    I(0x18003ecu);
+    I_(0x18003ecu);
     DP_ADD(4, R[12], 0x54u);
 L_18003f0:
-    I(0x18003f0u);
+    I_(0x18003f0u);
     STR_(R[5], R[4], SH_LSL(R[6], 2), 1, 1, 0, -1);
 L_18003f4:
-    I(0x18003f4u);
+    I_(0x18003f4u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_PC(0) XFER_END;
     LEAVE();
 L_18003f8:
-    I(0x18003f8u);
+    I_(0x18003f8u);
     STM_BEGIN(R[13] - 24) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[14]) R[13] = R[13] - 24; XFER_END;
 L_18003fc:
-    I(0x18003fcu);
+    I_(0x18003fcu);
     DP_ADD(2, R[12], 0x54u);
 L_1800400:
-    I(0x1800400u);
+    I_(0x1800400u);
     LDR_(0, R[2], SH_LSL(R[0], 2), 1, 1, 0, -1);
 L_1800404:
-    I(0x1800404u);
+    I_(0x1800404u);
     R[14] = 0x1800408u | PSR();
     CALL(Flexisound_18001ec, 0x1800368u, 0x1800408u);
 L_1800408:
-    I(0x1800408u);
+    I_(0x1800408u);
     DP_SUB(3, R[3], 0x1u);
 L_180040c:
-    I(0x180040cu);
+    I_(0x180040cu);
     DP_MOV(2, R[0]);
 L_1800410:
-    I(0x1800410u);
+    I_(0x1800410u);
     DP_MOV(0, 0x7fu);
 L_1800414:
-    I(0x1800414u);
+    I_(0x1800414u);
     SWI(0x40180u, 0x1800418u);
 L_1800418:
-    I(0x1800418u);
+    I_(0x1800418u);
     DP_MOV(4, R[0]);
 L_180041c:
-    I(0x180041cu);
+    I_(0x180041cu);
     LDR_(0, R[2], R[3], 1, 1, 1, -1);
 L_1800420:
-    I(0x1800420u);
+    I_(0x1800420u);
     DP_CMP(R[1], 0x0u);
 L_1800424:
-    I(0x1800424u);
+    I_(0x1800424u);
     if (C_EQ) {
         DP_EOR(0, R[0], 0x7fu);
     }
 L_1800428:
-    I(0x1800428u);
+    I_(0x1800428u);
     if (C_EQ) {
         DP_RSB(0, R[0], 0x7fu);
     }
 L_180042c:
-    I(0x180042cu);
+    I_(0x180042cu);
     DP_MOV(0, SH_LSL(R[0], 24));
 L_1800430:
-    I(0x1800430u);
+    I_(0x1800430u);
     SWI(0x40181u, 0x1800434u);
 L_1800434:
-    I(0x1800434u);
+    I_(0x1800434u);
     DP_MOV(0, SH_ASR(R[0], 24));
 L_1800438:
-    I(0x1800438u);
+    I_(0x1800438u);
     STR_(R[0], R[2], R[3], 1, 1, 1, -1);
 L_180043c:
-    I(0x180043cu);
+    I_(0x180043cu);
     DP_SUBS(3, R[3], 0x1u);
 L_1800440:
-    I(0x1800440u);
+    I_(0x1800440u);
     if (C_GT) {
         goto L_180041c;
     }
 L_1800444:
-    I(0x1800444u);
+    I_(0x1800444u);
     DP_MOV(0, R[4]);
 L_1800448:
-    I(0x1800448u);
+    I_(0x1800448u);
     SWI(0x40180u, 0x180044cu);
 L_180044c:
-    I(0x180044cu);
+    I_(0x180044cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 24;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_PC(0) XFER_END;
     LEAVE();
 L_1800450:
-    I(0x1800450u);
+    I_(0x1800450u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0x1800454u);
@@ -722,208 +722,208 @@ void Flexisound_1800460(uint32_t e)
     default: bad_entry(0x1800460u, e); return;
     }
 L_1800460:
-    I(0x1800460u);
+    I_(0x1800460u);
     goto L_18004b8;
     JUMP(0x1800464u);
 L_18004b8:
-    I(0x18004b8u);
+    I_(0x18004b8u);
     LDR_(3, 0x18004c0u, 0x6cu, 1, 0, 0, -1);
 L_18004bc:
-    I(0x18004bcu);
+    I_(0x18004bcu);
     DP_ADD(3, R[3], SH_LSL(R[7], 2));
 L_18004c0:
-    I(0x18004c0u);
+    I_(0x18004c0u);
     LDR_(4, R[3], 0x8u, 1, 1, 0, -1);
 L_18004c4:
-    I(0x18004c4u);
+    I_(0x18004c4u);
     STR_(R[4], R[9], 0x10u, 1, 1, 0, -1);
 L_18004c8:
-    I(0x18004c8u);
+    I_(0x18004c8u);
     LDR_(5, R[3], 0x28u, 1, 1, 0, -1);
 L_18004cc:
-    I(0x18004ccu);
+    I_(0x18004ccu);
     DP_ADD(5, R[5], R[4]);
 L_18004d0:
-    I(0x18004d0u);
+    I_(0x18004d0u);
     STR_(R[5], R[9], 0x14u, 1, 1, 0, -1);
 L_18004d4:
-    I(0x18004d4u);
+    I_(0x18004d4u);
     LDR_(4, 0x18004dcu, 0x28u, 1, 0, 0, -1);
 L_18004d8:
-    I(0x18004d8u);
+    I_(0x18004d8u);
     STR_(R[4], R[9], 0x18u, 1, 1, 0, -1);
 L_18004dc:
-    I(0x18004dcu);
+    I_(0x18004dcu);
     LDM_BEGIN(R[9] + 0)  LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) XFER_END;
 L_18004e0:
-    I(0x18004e0u);
+    I_(0x18004e0u);
     DP_AND(1, R[1], 0x7fu);
 L_18004e4:
-    I(0x18004e4u);
+    I_(0x18004e4u);
     LDR_(1, R[7], SH_LSL(R[1], 1), 1, 1, 1, -1);
 L_18004e8:
-    I(0x18004e8u);
+    I_(0x18004e8u);
     DP_MOV(1, SH_LSR(R[1], 1));
 L_18004ec:
-    I(0x18004ecu);
+    I_(0x18004ecu);
     DP_RSB(1, R[1], 0x7fu);
 L_18004f0:
-    I(0x18004f0u);
+    I_(0x18004f0u);
     DP_CMP(R[5], R[6]);
 L_18004f4:
-    I(0x18004f4u);
+    I_(0x18004f4u);
     if (C_GE) {
         goto L_180057c;
     }
 L_18004f8:
-    I(0x18004f8u);
+    I_(0x18004f8u);
     DP_ADD(2, R[2], SH_LSL(R[2], 16));
 L_18004fc:
-    I(0x18004fcu);
+    I_(0x18004fcu);
     LDR_(0, R[5], SH_LSR(R[2], 24), 1, 1, 1, -1);
 L_1800500:
-    I(0x1800500u);
+    I_(0x1800500u);
     DP_SUBS(0, R[0], SH_LSL(R[1], 1));
 L_1800504:
-    I(0x1800504u);
+    I_(0x1800504u);
     if (C_MI) {
         DP_MOV(0, 0x0u);
     }
 L_1800508:
-    I(0x1800508u);
+    I_(0x1800508u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_180050c:
-    I(0x180050cu);
+    I_(0x180050cu);
     DP_ADD(2, R[2], SH_LSL(R[2], 16));
 L_1800510:
-    I(0x1800510u);
+    I_(0x1800510u);
     LDR_(0, R[5], SH_LSR(R[2], 24), 1, 1, 1, -1);
 L_1800514:
-    I(0x1800514u);
+    I_(0x1800514u);
     DP_SUBS(0, R[0], SH_LSL(R[1], 1));
 L_1800518:
-    I(0x1800518u);
+    I_(0x1800518u);
     if (C_MI) {
         DP_MOV(0, 0x0u);
     }
 L_180051c:
-    I(0x180051cu);
+    I_(0x180051cu);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800520:
-    I(0x1800520u);
+    I_(0x1800520u);
     DP_ADD(2, R[2], SH_LSL(R[2], 16));
 L_1800524:
-    I(0x1800524u);
+    I_(0x1800524u);
     LDR_(0, R[5], SH_LSR(R[2], 24), 1, 1, 1, -1);
 L_1800528:
-    I(0x1800528u);
+    I_(0x1800528u);
     DP_SUBS(0, R[0], SH_LSL(R[1], 1));
 L_180052c:
-    I(0x180052cu);
+    I_(0x180052cu);
     if (C_MI) {
         DP_MOV(0, 0x0u);
     }
 L_1800530:
-    I(0x1800530u);
+    I_(0x1800530u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800534:
-    I(0x1800534u);
+    I_(0x1800534u);
     DP_ADD(2, R[2], SH_LSL(R[2], 16));
 L_1800538:
-    I(0x1800538u);
+    I_(0x1800538u);
     LDR_(0, R[5], SH_LSR(R[2], 24), 1, 1, 1, -1);
 L_180053c:
-    I(0x180053cu);
+    I_(0x180053cu);
     DP_SUBS(0, R[0], SH_LSL(R[1], 1));
 L_1800540:
-    I(0x1800540u);
+    I_(0x1800540u);
     if (C_MI) {
         DP_MOV(0, 0x0u);
     }
 L_1800544:
-    I(0x1800544u);
+    I_(0x1800544u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800548:
-    I(0x1800548u);
+    I_(0x1800548u);
     DP_ADD(5, R[5], SH_LSR(R[2], 24));
 L_180054c:
-    I(0x180054cu);
+    I_(0x180054cu);
     DP_BIC(2, R[2], 0xff000000u);
 L_1800550:
-    I(0x1800550u);
+    I_(0x1800550u);
     DP_CMP(R[12], R[10]);
 L_1800554:
-    I(0x1800554u);
+    I_(0x1800554u);
     if (C_LT) {
         goto L_18004f0;
     }
 L_1800558:
-    I(0x1800558u);
+    I_(0x1800558u);
     DP_CMP(R[5], R[6]);
 L_180055c:
-    I(0x180055cu);
+    I_(0x180055cu);
     if (C_GE) {
         DP_MOV(0, 0x2u);
     }
 L_1800560:
-    I(0x1800560u);
+    I_(0x1800560u);
     if (C_GE) {
         STM_BEGIN(R[9] + 4) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) XFER_END;
     }
 L_1800564:
-    I(0x1800564u);
+    I_(0x1800564u);
     if (C_GE) {
         LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_PC(0) XFER_END;
         LEAVE();
     }
 L_1800568:
-    I(0x1800568u);
+    I_(0x1800568u);
     DP_SUBS(4, R[4], 0x1u);
 L_180056c:
-    I(0x180056cu);
+    I_(0x180056cu);
     STM_BEGIN(R[9] + 4) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) XFER_END;
 L_1800570:
-    I(0x1800570u);
+    I_(0x1800570u);
     if (C_PL) {
         DP_MOV(0, 0x8u);
     }
 L_1800574:
-    I(0x1800574u);
+    I_(0x1800574u);
     if (C_MI) {
         DP_MOV(0, 0x2u);
     }
 L_1800578:
-    I(0x1800578u);
+    I_(0x1800578u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_PC(0) XFER_END;
     LEAVE();
 L_180057c:
-    I(0x180057cu);
+    I_(0x180057cu);
     DP_MOV(0, 0x0u);
 L_1800580:
-    I(0x1800580u);
+    I_(0x1800580u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800584:
-    I(0x1800584u);
+    I_(0x1800584u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800588:
-    I(0x1800588u);
+    I_(0x1800588u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_180058c:
-    I(0x180058cu);
+    I_(0x180058cu);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_1800590:
-    I(0x1800590u);
+    I_(0x1800590u);
     DP_CMP(R[12], R[10]);
 L_1800594:
-    I(0x1800594u);
+    I_(0x1800594u);
     if (C_LT) {
         goto L_1800580;
     }
 L_1800598:
-    I(0x1800598u);
+    I_(0x1800598u);
     DP_MOV(0, 0x2u);
 L_180059c:
-    I(0x180059cu);
+    I_(0x180059cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x18005a0u);
@@ -936,7 +936,7 @@ void Flexisound_1800470(uint32_t e)
     default: bad_entry(0x1800470u, e); return;
     }
 L_1800470:
-    I(0x1800470u);
+    I_(0x1800470u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x1800474u);

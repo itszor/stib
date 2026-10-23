@@ -8,7 +8,7 @@ void Flexisound_1800368(uint32_t e)
     default: bad_entry(0x1800368u, e); return;
     }
 L_1800378:
-    I(0x1800378u);
+    I_(0x1800378u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 12;  LDM_R(1) LDM_R(2) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x180037cu);
@@ -30,37 +30,37 @@ void Flexisound_1800464(uint32_t e)
     default: bad_entry(0x1800464u, e); return;
     }
 L_1800464:
-    I(0x1800464u);
+    I_(0x1800464u);
     goto L_18005a0;
     JUMP(0x1800468u);
 L_18005a0:
-    I(0x18005a0u);
+    I_(0x18005a0u);
     DP_MOV(0, 0x0u);
 L_18005a4:
-    I(0x18005a4u);
+    I_(0x18005a4u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_18005a8:
-    I(0x18005a8u);
+    I_(0x18005a8u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_18005ac:
-    I(0x18005acu);
+    I_(0x18005acu);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_18005b0:
-    I(0x18005b0u);
+    I_(0x18005b0u);
     STR_(R[0], R[12], R[11], 0, 1, 1, 12);
 L_18005b4:
-    I(0x18005b4u);
+    I_(0x18005b4u);
     DP_CMP(R[12], R[10]);
 L_18005b8:
-    I(0x18005b8u);
+    I_(0x18005b8u);
     if (C_LT) {
         goto L_18005a4;
     }
 L_18005bc:
-    I(0x18005bcu);
+    I_(0x18005bcu);
     DP_MOV(0, 0x1u);
 L_18005c0:
-    I(0x18005c0u);
+    I_(0x18005c0u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x18005c4u);

@@ -33,84 +33,84 @@ void Flexisound_180013c(uint32_t e)
     default: bad_entry(0x180013cu, e); return;
     }
 L_180013c:
-    I(0x180013cu);
+    I_(0x180013cu);
     STM_BEGIN(R[13] - 20) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[14]) R[13] = R[13] - 20; XFER_END;
 L_1800140:
-    I(0x1800140u);
+    I_(0x1800140u);
     DP_MOV(0, 0x6u);
 L_1800144:
-    I(0x1800144u);
+    I_(0x1800144u);
     DP_MOV(3, 0xd4u);
 L_1800148:
-    I(0x1800148u);
+    I_(0x1800148u);
     SWI(0x1eu, 0x180014cu);
 L_180014c:
-    I(0x180014cu);
+    I_(0x180014cu);
     STR_(R[2], R[12], 0x0u, 1, 1, 0, -1);
 L_1800150:
-    I(0x1800150u);
+    I_(0x1800150u);
     DP_MOV(12, R[2]);
 L_1800154:
-    I(0x1800154u);
+    I_(0x1800154u);
     DP_MOV(0, 0x1fu);
 L_1800158:
-    I(0x1800158u);
+    I_(0x1800158u);
     DP_MOV(1, 0x0u);
 L_180015c:
-    I(0x180015cu);
+    I_(0x180015cu);
     DP_ADD(3, R[12], 0x54u);
 L_1800160:
-    I(0x1800160u);
+    I_(0x1800160u);
     STR_(R[1], R[3], SH_LSL(R[0], 2), 1, 1, 0, -1);
 L_1800164:
-    I(0x1800164u);
+    I_(0x1800164u);
     DP_SUBS(0, R[0], 0x1u);
 L_1800168:
-    I(0x1800168u);
+    I_(0x1800168u);
     if (C_GE) {
         goto L_1800160;
     }
 L_180016c:
-    I(0x180016cu);
+    I_(0x180016cu);
     DP_ADD(0, 0x1800174u, 0x2e4u);
 L_1800170:
-    I(0x1800170u);
+    I_(0x1800170u);
     DP_MOV(1, 0x0u);
 L_1800174:
-    I(0x1800174u);
+    I_(0x1800174u);
     SWI(0x60183u, 0x1800178u);
 L_1800178:
-    I(0x1800178u);
+    I_(0x1800178u);
     STR_(R[1], R[12], 0x0u, 1, 1, 0, -1);
 L_180017c:
-    I(0x180017cu);
+    I_(0x180017cu);
     DP_MOV(0, 0x4u);
 L_1800180:
-    I(0x1800180u);
+    I_(0x1800180u);
     DP_ADD(1, 0x1800188u, 0x2f0u);
 L_1800184:
-    I(0x1800184u);
+    I_(0x1800184u);
     SWI(0x6018au, 0x1800188u);
 L_1800188:
-    I(0x1800188u);
+    I_(0x1800188u);
     DP_MOV(0, 0x3u);
 L_180018c:
-    I(0x180018cu);
+    I_(0x180018cu);
     DP_ADD(1, 0x1800194u, 0x2e4u);
 L_1800190:
-    I(0x1800190u);
+    I_(0x1800190u);
     SWI(0x6018au, 0x1800194u);
 L_1800194:
-    I(0x1800194u);
+    I_(0x1800194u);
     DP_MOV(0, 0x2u);
 L_1800198:
-    I(0x1800198u);
+    I_(0x1800198u);
     DP_ADD(1, 0x18001a0u, 0x2d8u);
 L_180019c:
-    I(0x180019cu);
+    I_(0x180019cu);
     SWI(0x6018au, 0x18001a0u);
 L_18001a0:
-    I(0x18001a0u);
+    I_(0x18001a0u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 20;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x18001a4u);
@@ -123,7 +123,7 @@ void Flexisound_1800458(uint32_t e)
     default: bad_entry(0x1800458u, e); return;
     }
 L_1800458:
-    I(0x1800458u);
+    I_(0x1800458u);
     JUMP(0x18004dcu);
     JUMP(0x180045cu);
 }
@@ -145,38 +145,38 @@ void Flexisound_1800468(uint32_t e)
     default: bad_entry(0x1800468u, e); return;
     }
 L_1800468:
-    I(0x1800468u);
+    I_(0x1800468u);
     goto L_180048c;
     JUMP(0x180046cu);
 L_180048c:
-    I(0x180048cu);
+    I_(0x180048cu);
     STM_BEGIN(R[13] - 20) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) R[13] = R[13] - 20; XFER_END;
 L_1800490:
-    I(0x1800490u);
+    I_(0x1800490u);
     DP_MOV(0, 0x4u);
 L_1800494:
-    I(0x1800494u);
+    I_(0x1800494u);
     DP_MOV(1, 0x0u);
 L_1800498:
-    I(0x1800498u);
+    I_(0x1800498u);
     DP_MOV(2, 0x0u);
 L_180049c:
-    I(0x180049cu);
+    I_(0x180049cu);
     DP_MOV(3, 0x0u);
 L_18004a0:
-    I(0x18004a0u);
+    I_(0x18004a0u);
     DP_MOV(4, 0x0u);
 L_18004a4:
-    I(0x18004a4u);
+    I_(0x18004a4u);
     SWI(0x40140u, 0x18004a8u);
 L_18004a8:
-    I(0x18004a8u);
+    I_(0x18004a8u);
     LDR_(0, R[3], 0xcu, 1, 1, 0, -1);
 L_18004ac:
-    I(0x18004acu);
+    I_(0x18004acu);
     STR_(R[0], 0x18004b4u, 0x0u, 1, 1, 0, -1);
 L_18004b0:
-    I(0x18004b0u);
+    I_(0x18004b0u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 24;  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0x18004b4u);

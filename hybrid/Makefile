@@ -79,7 +79,7 @@ stib-full: build/fullgen/.done game.c $(ROGER)/libroger.a
 build/fullgen/.done: ../analysis/runimage.json
 	@mkdir -p build/fullgen
 	$(SS)/_build/default/bin/main.exe gen "../stib/!Stib/!RunImage" 8000 ../analysis/runimage.json \
-	    --c build/fullgen --prefix Full --tabprefix full --files 4
+	    --c build/fullgen --prefix Full --tabprefix full --files 4 --no-smc
 	touch $@
 build/fullgen/%.o: build/fullgen/%.c $(ROGER)/include/roger_cpu.h
 	$(CC) $(CFLAGS) -w -fno-strict-aliasing -I$(ROGER)/include -c -o $@ $<

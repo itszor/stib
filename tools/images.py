@@ -5,6 +5,7 @@
                         analysis/<name>.json (analysis/<name>.roots, if there,
                         adds entry points)
     images.py gen       superspider gen for each image -> hybrid/gen/<name>/
+                        (--no-smc: neither stores over its own code)
 
 The game is a hybrid: its own C is compiled natively (../source, hybrid/),
 and the rest of !RunImage is translated: the C start-up (the AIF header and
@@ -91,7 +92,8 @@ def gen():
             os.remove(os.path.join(out, f))
         cmd = [ss, 'gen', os.path.join(APP, path), '%x' % base,
                os.path.join(TOP, 'analysis', name + '.json'), '--c', out,
-               '--prefix', name[0].upper() + name[1:], '--tabprefix', name, '--files', '4']
+               '--prefix', name[0].upper() + name[1:], '--tabprefix', name, '--files', '4',
+               '--no-smc']     # neither image stores over its code (the analyses: no smc)
         if name == 'runimage':
             for lo, hi in RANGES:
                 cmd += ['--range', '%x-%x' % (lo, hi)]

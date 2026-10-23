@@ -24,63 +24,63 @@ void Runimage_9a58(uint32_t e)
     default: bad_entry(0x9a58u, e); return;
     }
 L_f10c:
-    I(0xf10cu);
+    I_(0xf10cu);
     STM_BEGIN(R[13] - 16) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[14]) R[13] = R[13] - 16; XFER_END;
 L_f110:
-    I(0xf110u);
+    I_(0xf110u);
     DP_ADD(4, R[1], SH_LSL(R[3], 8));
 L_f114:
-    I(0xf114u);
+    I_(0xf114u);
     DP_ADD(4, R[4], SH_LSL(R[3], 6));
 L_f118:
-    I(0xf118u);
+    I_(0xf118u);
     DP_ADD(4, R[4], R[2]);
 L_f11c:
-    I(0xf11cu);
+    I_(0xf11cu);
     DP_MOV(2, 0x18u);
 L_f120:
-    I(0xf120u);
+    I_(0xf120u);
     DP_MOV(5, R[4]);
 L_f124:
-    I(0xf124u);
+    I_(0xf124u);
     DP_MOV(3, 0x18u);
 L_f128:
-    I(0xf128u);
+    I_(0xf128u);
     LDR_(6, R[0], 0x1u, 0, 1, 1, 0);
 L_f12c:
-    I(0xf12cu);
+    I_(0xf12cu);
     DP_CMP(R[6], 0x0u);
 L_f130:
-    I(0xf130u);
+    I_(0xf130u);
     if (C_NE) {
         STR_(R[6], R[5], 0x1u, 0, 1, 1, 5);
     }
 L_f134:
-    I(0xf134u);
+    I_(0xf134u);
     if (C_EQ) {
         DP_ADD(5, R[5], 0x1u);
     }
 L_f138:
-    I(0xf138u);
+    I_(0xf138u);
     DP_SUBS(3, R[3], 0x1u);
 L_f13c:
-    I(0xf13cu);
+    I_(0xf13cu);
     if (C_GT) {
         goto L_f128;
     }
 L_f140:
-    I(0xf140u);
+    I_(0xf140u);
     DP_ADD(4, R[4], 0x140u);
 L_f144:
-    I(0xf144u);
+    I_(0xf144u);
     DP_SUBS(2, R[2], 0x1u);
 L_f148:
-    I(0xf148u);
+    I_(0xf148u);
     if (C_GT) {
         goto L_f120;
     }
 L_f14c:
-    I(0xf14cu);
+    I_(0xf14cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 16;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xf150u);
@@ -99,27 +99,27 @@ void Runimage_be44(uint32_t e)
     default: bad_entry(0xbe44u, e); return;
     }
 L_be44:
-    I(0xbe44u);
+    I_(0xbe44u);
     DP_MOV(12, R[13]);
 L_be48:
-    I(0xbe48u);
+    I_(0xbe48u);
     STM_BEGIN(R[13] - 16) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xbe54u | PSR())) R[13] = R[13] - 16; XFER_END;
 L_be4c:
-    I(0xbe4cu);
+    I_(0xbe4cu);
     DP_SUB(11, R[12], 0x4u);
 L_be50:
-    I(0xbe50u);
+    I_(0xbe50u);
     R[14] = 0xbe54u | PSR();
     npc = 0xe8f8u; CALLI(0xbe54u);
 L_be54:
-    I(0xbe54u);
+    I_(0xbe54u);
     LDR_(1, 0xbe5cu, 0xcu, 1, 1, 0, -1);
 L_be58:
-    I(0xbe58u);
+    I_(0xbe58u);
     R[14] = 0xbe5cu | PSR();
     npc = 0xe9e4u; CALLI(0xbe5cu);
 L_be5c:
-    I(0xbe5cu);
+    I_(0xbe5cu);
     LDM_BEGIN(R[11] - 12)  LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xbe60u);
@@ -144,49 +144,49 @@ void Runimage_c438(uint32_t e)
     default: bad_entry(0xc438u, e); return;
     }
 L_c438:
-    I(0xc438u);
+    I_(0xc438u);
     DP_MOV(12, R[13]);
 L_c43c:
-    I(0xc43cu);
+    I_(0xc43cu);
     STM_BEGIN(R[13] - 16) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xc448u | PSR())) R[13] = R[13] - 16; XFER_END;
 L_c440:
-    I(0xc440u);
+    I_(0xc440u);
     DP_SUB(11, R[12], 0x4u);
 L_c444:
-    I(0xc444u);
+    I_(0xc444u);
     DP_CMP(R[13], R[10]);
 L_c448:
-    I(0xc448u);
+    I_(0xc448u);
     if (C_LT) {
         R[14] = 0xc44cu | PSR();
         npc = 0xe9acu; CALLI(0xc44cu);
     }
 L_c44c:
-    I(0xc44cu);
+    I_(0xc44cu);
     DP_SUB(13, R[13], 0x10u);
 L_c450:
-    I(0xc450u);
+    I_(0xc450u);
     DP_MOV(2, R[13]);
 L_c454:
-    I(0xc454u);
+    I_(0xc454u);
     DP_MOV(1, R[0]);
 L_c458:
-    I(0xc458u);
+    I_(0xc458u);
     DP_MOV(0, 0x11u);
 L_c45c:
-    I(0xc45cu);
+    I_(0xc45cu);
     R[14] = 0xc460u | PSR();
     npc = 0xe924u; CALLI(0xc460u);
 L_c460:
-    I(0xc460u);
+    I_(0xc460u);
     DP_CMP(R[0], 0x1u);
 L_c464:
-    I(0xc464u);
+    I_(0xc464u);
     if (C_NE) {
         DP_MOV(0, 0x0u);
     }
 L_c468:
-    I(0xc468u);
+    I_(0xc468u);
     if (C_NE) {
         DP_ADD(13, R[13], 0x10u);
     }
@@ -225,90 +225,90 @@ void Runimage_c524(uint32_t e)
     default: bad_entry(0xc524u, e); return;
     }
 L_c524:
-    I(0xc524u);
+    I_(0xc524u);
     LDR_(1, 0xc52cu, 0x10u, 1, 0, 0, -1);
 L_c528:
-    I(0xc528u);
+    I_(0xc528u);
     LDR_(2, R[1], SH_LSL(R[0], 1), 1, 1, 0, -1);
 L_c52c:
-    I(0xc52cu);
+    I_(0xc52cu);
     DP_SUB(2, R[2], 0x1u);
 L_c530:
-    I(0xc530u);
+    I_(0xc530u);
     DP_ADD(1, R[1], SH_LSL(R[0], 1));
 L_c534:
-    I(0xc534u);
+    I_(0xc534u);
     STR_(R[2], R[1], 0x0u, 1, 1, 1, -1);
 L_c538:
-    I(0xc538u);
+    I_(0xc538u);
     DP_MOV(3, SH_ASR(R[2], 8));
 L_c53c:
-    I(0xc53cu);
+    I_(0xc53cu);
     STR_(R[3], R[1], 0x1u, 1, 1, 1, -1);
 L_c540:
-    I(0xc540u);
+    I_(0xc540u);
     DP_MOV(1, SH_LSL(R[2], 16));
 L_c544:
-    I(0xc544u);
+    I_(0xc544u);
     DP_MOVS(1, SH_ASR(R[1], 16), CY_ASR(R[1], 16));
 L_c548:
-    I(0xc548u);
+    I_(0xc548u);
     if (C_NE) {
         SETPC(R[14], 1);
         LEAVE();
     }
 L_c54c:
-    I(0xc54cu);
+    I_(0xc54cu);
     LDR_(1, 0xc554u, 0x38u, 1, 1, 0, -1);
 L_c550:
-    I(0xc550u);
+    I_(0xc550u);
     LDR_(2, R[1], R[0], 1, 1, 1, -1);
 L_c554:
-    I(0xc554u);
+    I_(0xc554u);
     LDR_(1, 0xc55cu, 0x3cu, 1, 0, 0, -1);
 L_c558:
-    I(0xc558u);
+    I_(0xc558u);
     DP_CMP(R[2], 0x0u);
 L_c55c:
-    I(0xc55cu);
+    I_(0xc55cu);
     if (C_EQ) {
         goto L_c574;
     }
 L_c560:
-    I(0xc560u);
+    I_(0xc560u);
     DP_MOV(2, 0x1u);
 L_c564:
-    I(0xc564u);
+    I_(0xc564u);
     DP_MOV(3, SHR(R[2], 0, (R[0] & 0xFF)));
 L_c568:
-    I(0xc568u);
+    I_(0xc568u);
     LDR_(2, R[1], 0x0u, 1, 1, 0, -1);
 L_c56c:
-    I(0xc56cu);
+    I_(0xc56cu);
     DP_ORR(2, R[3], R[2]);
 L_c570:
-    I(0xc570u);
+    I_(0xc570u);
     STR_(R[2], R[1], 0x0u, 1, 1, 0, -1);
 L_c574:
-    I(0xc574u);
+    I_(0xc574u);
     DP_CMP(R[0], 0xdu);
 L_c578:
-    I(0xc578u);
+    I_(0xc578u);
     if (C_NE) {
         SETPC(R[14], 1);
         LEAVE();
     }
 L_c57c:
-    I(0xc57cu);
+    I_(0xc57cu);
     LDR_(0, R[1], 0x0u, 1, 1, 0, -1);
 L_c580:
-    I(0xc580u);
+    I_(0xc580u);
     DP_BIC(0, R[0], 0x400000u);
 L_c584:
-    I(0xc584u);
+    I_(0xc584u);
     STR_(R[0], R[1], 0x0u, 1, 1, 0, -1);
 L_c588:
-    I(0xc588u);
+    I_(0xc588u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xc58cu);
@@ -330,38 +330,38 @@ void Runimage_c6d4(uint32_t e)
     default: bad_entry(0xc6d4u, e); return;
     }
 L_c6d4:
-    I(0xc6d4u);
+    I_(0xc6d4u);
     LDR_(1, 0xc6dcu, 0x30u, 1, 0, 0, -1);
 L_c6d8:
-    I(0xc6d8u);
+    I_(0xc6d8u);
     goto L_c6e8;
 L_c6dc:
-    I(0xc6dcu);
+    I_(0xc6dcu);
     LDR_(2, R[1], 0x8u, 1, 1, 0, -1);
 L_c6e0:
-    I(0xc6e0u);
+    I_(0xc6e0u);
     DP_CMP(R[2], R[0]);
 L_c6e4:
-    I(0xc6e4u);
+    I_(0xc6e4u);
     if (C_EQ) {
         goto L_c6f4;
     }
 L_c6e8:
-    I(0xc6e8u);
+    I_(0xc6e8u);
     LDR_(1, R[1], 0x0u, 1, 1, 0, -1);
 L_c6ec:
-    I(0xc6ecu);
+    I_(0xc6ecu);
     DP_CMP(R[1], 0x0u);
 L_c6f0:
-    I(0xc6f0u);
+    I_(0xc6f0u);
     if (C_NE) {
         goto L_c6dc;
     }
 L_c6f4:
-    I(0xc6f4u);
+    I_(0xc6f4u);
     DP_MOV(0, R[1]);
 L_c6f8:
-    I(0xc6f8u);
+    I_(0xc6f8u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xc6fcu);
@@ -393,71 +393,71 @@ void Runimage_ca80(uint32_t e)
     default: bad_entry(0xca80u, e); return;
     }
 L_ca80:
-    I(0xca80u);
+    I_(0xca80u);
     DP_MOV(12, R[13]);
 L_ca84:
-    I(0xca84u);
+    I_(0xca84u);
     STM_BEGIN(R[13] - 28) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xca90u | PSR())) R[13] = R[13] - 28; XFER_END;
 L_ca88:
-    I(0xca88u);
+    I_(0xca88u);
     DP_SUB(11, R[12], 0x4u);
 L_ca8c:
-    I(0xca8cu);
+    I_(0xca8cu);
     DP_CMP(R[13], R[10]);
 L_ca90:
-    I(0xca90u);
+    I_(0xca90u);
     if (C_LT) {
         R[14] = 0xca94u | PSR();
         npc = 0xe9acu; CALLI(0xca94u);
     }
 L_ca94:
-    I(0xca94u);
+    I_(0xca94u);
     DP_MOV(5, R[0]);
 L_ca98:
-    I(0xca98u);
+    I_(0xca98u);
     DP_MOV(4, R[1]);
 L_ca9c:
-    I(0xca9cu);
+    I_(0xca9cu);
     DP_ADD(6, R[4], 0xcu);
 L_caa0:
-    I(0xcaa0u);
+    I_(0xcaa0u);
     goto L_caac;
 L_caa4:
-    I(0xcaa4u);
+    I_(0xcaa4u);
     DP_MOV(0, R[6]);
 L_caa8:
-    I(0xcaa8u);
+    I_(0xcaa8u);
     R[14] = 0xcaacu | PSR();
     CALL(Runimage_c960, 0xc960u, 0xcaacu);
 L_caac:
-    I(0xcaacu);
+    I_(0xcaacu);
     LDR_(1, R[4], 0xcu, 1, 1, 0, -1);
 L_cab0:
-    I(0xcab0u);
+    I_(0xcab0u);
     DP_CMP(R[1], 0x0u);
 L_cab4:
-    I(0xcab4u);
+    I_(0xcab4u);
     if (C_NE) {
         goto L_caa4;
     }
 L_cab8:
-    I(0xcab8u);
+    I_(0xcab8u);
     DP_MOV(1, R[4]);
 L_cabc:
-    I(0xcabcu);
+    I_(0xcabcu);
     DP_MOV(0, R[5]);
 L_cac0:
-    I(0xcac0u);
+    I_(0xcac0u);
     R[14] = 0xcac4u | PSR();
     CALL(Runimage_e0b4, 0xe0b4u, 0xcac4u);
 L_cac4:
-    I(0xcac4u);
+    I_(0xcac4u);
     DP_MOV(0, R[4]);
 L_cac8:
-    I(0xcac8u);
+    I_(0xcac8u);
     LDM_BEGIN(R[11] - 24)  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(11) LDM_R(13) LDM_R(14) XFER_END;
 L_cacc:
-    I(0xcaccu);
+    I_(0xcaccu);
     JUMP(0xeaa8u);
     JUMP(0xcad0u);
 }
@@ -495,100 +495,100 @@ void Runimage_ccd0(uint32_t e)
     default: bad_entry(0xccd0u, e); return;
     }
 L_ccd0:
-    I(0xccd0u);
+    I_(0xccd0u);
     DP_MOV(12, R[13]);
 L_ccd4:
-    I(0xccd4u);
+    I_(0xccd4u);
     STM_BEGIN(R[13] - 32) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xcce0u | PSR())) R[13] = R[13] - 32; XFER_END;
 L_ccd8:
-    I(0xccd8u);
+    I_(0xccd8u);
     DP_SUB(11, R[12], 0x4u);
 L_ccdc:
-    I(0xccdcu);
+    I_(0xccdcu);
     DP_CMP(R[13], R[10]);
 L_cce0:
-    I(0xcce0u);
+    I_(0xcce0u);
     if (C_LT) {
         R[14] = 0xcce4u | PSR();
         npc = 0xe9acu; CALLI(0xcce4u);
     }
 L_cce4:
-    I(0xcce4u);
+    I_(0xcce4u);
     DP_MOV(4, R[0]);
 L_cce8:
-    I(0xcce8u);
+    I_(0xcce8u);
     DP_MOV(5, R[1]);
 L_ccec:
-    I(0xccecu);
+    I_(0xccecu);
     LDR_(6, R[4], 0x0u, 1, 1, 0, -1);
 L_ccf0:
-    I(0xccf0u);
+    I_(0xccf0u);
     LDR_(7, 0xccf8u, 0x7d8u, 1, 0, 0, -1);
 L_ccf4:
-    I(0xccf4u);
+    I_(0xccf4u);
     goto L_cd2c;
 L_ccf8:
-    I(0xccf8u);
+    I_(0xccf8u);
     STR_(R[6], R[7], 0xf8u, 1, 1, 0, -1);
 L_ccfc:
-    I(0xccfcu);
+    I_(0xccfcu);
     LDR_(1, R[6], 0x10u, 1, 1, 0, -1);
 L_cd00:
-    I(0xcd00u);
+    I_(0xcd00u);
     DP_MOV(0, R[5]);
 L_cd04:
-    I(0xcd04u);
+    I_(0xcd04u);
     LDR_(2, R[6], 0xcu, 1, 1, 0, -1);
 L_cd08:
-    I(0xcd08u);
+    I_(0xcd08u);
     DP_MOV(14, (0xcd10u | PSR()));
 L_cd0c:
-    I(0xcd0cu);
+    I_(0xcd0cu);
     SETPC(R[2], 0);
     CALLI(0xcd10u);
 L_cd10:
-    I(0xcd10u);
+    I_(0xcd10u);
     DP_CMP(R[0], 0x0u);
 L_cd14:
-    I(0xcd14u);
+    I_(0xcd14u);
     if (C_NE) {
         DP_MOV(0, 0x1u);
     }
 L_cd18:
-    I(0xcd18u);
+    I_(0xcd18u);
     if (C_NE) {
         LDM_BEGIN(R[11] - 28)  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
         LEAVE();
     }
 L_cd1c:
-    I(0xcd1cu);
+    I_(0xcd1cu);
     LDR_(0, R[7], 0xf8u, 1, 1, 0, -1);
 L_cd20:
-    I(0xcd20u);
+    I_(0xcd20u);
     DP_CMP(R[0], R[6]);
 L_cd24:
-    I(0xcd24u);
+    I_(0xcd24u);
     if (C_NE) {
         LDR_(6, R[4], 0x0u, 1, 1, 0, -1);
     }
 L_cd28:
-    I(0xcd28u);
+    I_(0xcd28u);
     if (C_EQ) {
         LDR_(6, R[6], 0x0u, 1, 1, 0, -1);
     }
 L_cd2c:
-    I(0xcd2cu);
+    I_(0xcd2cu);
     DP_CMP(R[6], 0x0u);
 L_cd30:
-    I(0xcd30u);
+    I_(0xcd30u);
     if (C_NE) {
         goto L_ccf8;
     }
 L_cd34:
-    I(0xcd34u);
+    I_(0xcd34u);
     DP_MOV(0, 0x0u);
 L_cd38:
-    I(0xcd38u);
+    I_(0xcd38u);
     LDM_BEGIN(R[11] - 28)  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xcd3cu);
@@ -716,429 +716,429 @@ void Runimage_d048(uint32_t e)
     default: bad_entry(0xd048u, e); return;
     }
 L_cd3c:
-    I(0xcd3cu);
+    I_(0xcd3cu);
     DP_MOV(12, R[13]);
 L_cd40:
-    I(0xcd40u);
+    I_(0xcd40u);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xcd4cu | PSR())) R[13] = R[13] - 20; XFER_END;
 L_cd44:
-    I(0xcd44u);
+    I_(0xcd44u);
     DP_SUB(11, R[12], 0x4u);
 L_cd48:
-    I(0xcd48u);
+    I_(0xcd48u);
     DP_CMP(R[13], R[10]);
 L_cd4c:
-    I(0xcd4cu);
+    I_(0xcd4cu);
     if (C_LT) {
         R[14] = 0xcd50u | PSR();
         npc = 0xe9acu; CALLI(0xcd50u);
     }
 L_cd50:
-    I(0xcd50u);
+    I_(0xcd50u);
     DP_MOV(4, R[0]);
 L_cd54:
-    I(0xcd54u);
+    I_(0xcd54u);
     LDR_(0, R[4], 0x0u, 1, 1, 0, -1);
 L_cd58:
-    I(0xcd58u);
+    I_(0xcd58u);
     LDR_(1, 0xcd60u, 0x544u, 1, 0, 0, -1);
 L_cd5c:
-    I(0xcd5cu);
+    I_(0xcd5cu);
     DP_ADD(0, R[1], SH_LSL(R[0], 3));
 L_cd60:
-    I(0xcd60u);
+    I_(0xcd60u);
     DP_MOV(1, R[4]);
 L_cd64:
-    I(0xcd64u);
+    I_(0xcd64u);
     R[14] = 0xcd68u | PSR();
     CALL(Runimage_ccd0, 0xccd0u, 0xcd68u);
 L_cd68:
-    I(0xcd68u);
+    I_(0xcd68u);
     DP_CMP(R[0], 0x0u);
 L_cd6c:
-    I(0xcd6cu);
+    I_(0xcd6cu);
     if (C_EQ) {
         DP_MOV(1, R[4]);
     }
 L_cd70:
-    I(0xcd70u);
+    I_(0xcd70u);
     if (C_EQ) {
         LDR_(0, 0xcd78u, 0x570u, 1, 0, 0, -1);
     }
 L_cd74:
-    I(0xcd74u);
+    I_(0xcd74u);
     if (C_EQ) {
         R[14] = 0xcd78u | PSR();
         CALL(Runimage_ccd0, 0xccd0u, 0xcd78u);
     }
 L_cd78:
-    I(0xcd78u);
+    I_(0xcd78u);
     DP_CMP(R[0], 0x0u);
 L_cd7c:
-    I(0xcd7cu);
+    I_(0xcd7cu);
     if (C_NE) {
         goto L_cda4;
     }
 L_cd80:
-    I(0xcd80u);
+    I_(0xcd80u);
     LDR_(0, R[4], 0x0u, 1, 1, 0, -1);
 L_cd84:
-    I(0xcd84u);
+    I_(0xcd84u);
     DP_CMP(R[0], 0x11u);
 L_cd88:
-    I(0xcd88u);
+    I_(0xcd88u);
     if (C_EQ) {
         goto L_cd94;
     }
 L_cd8c:
-    I(0xcd8cu);
+    I_(0xcd8cu);
     DP_CMP(R[0], 0x12u);
 L_cd90:
-    I(0xcd90u);
+    I_(0xcd90u);
     if (C_NE) {
         goto L_cda4;
     }
 L_cd94:
-    I(0xcd94u);
+    I_(0xcd94u);
     LDR_(0, R[4], 0x14u, 1, 1, 0, -1);
 L_cd98:
-    I(0xcd98u);
+    I_(0xcd98u);
     DP_CMP(R[0], 0x0u);
 L_cd9c:
-    I(0xcd9cu);
+    I_(0xcd9cu);
     if (C_EQ) {
         DP_MOV(0, 0x0u);
     }
 L_cda0:
-    I(0xcda0u);
+    I_(0xcda0u);
     if (C_EQ) {
         R[14] = 0xcda4u | PSR();
         npc = 0xeabcu; CALLI(0xcda4u);
     }
 L_cda4:
-    I(0xcda4u);
+    I_(0xcda4u);
     DP_MOV(0, 0x1u);
 L_cda8:
-    I(0xcda8u);
+    I_(0xcda8u);
     LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xcdacu);
 L_ce30:
-    I(0xce30u);
+    I_(0xce30u);
     DP_MOV(12, R[13]);
 L_ce34:
-    I(0xce34u);
+    I_(0xce34u);
     STM_BEGIN(R[13] - 24) STM_V(R[4]) STM_V(R[5]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xce40u | PSR())) R[13] = R[13] - 24; XFER_END;
 L_ce38:
-    I(0xce38u);
+    I_(0xce38u);
     DP_SUB(11, R[12], 0x4u);
 L_ce3c:
-    I(0xce3cu);
+    I_(0xce3cu);
     DP_CMP(R[13], R[10]);
 L_ce40:
-    I(0xce40u);
+    I_(0xce40u);
     if (C_LT) {
         R[14] = 0xce44u | PSR();
         npc = 0xe9acu; CALLI(0xce44u);
     }
 L_ce44:
-    I(0xce44u);
+    I_(0xce44u);
     DP_MOV(4, R[0]);
 L_ce48:
-    I(0xce48u);
+    I_(0xce48u);
     LDR_(0, R[4], 0x0u, 1, 1, 0, -1);
 L_ce4c:
-    I(0xce4cu);
+    I_(0xce4cu);
     DP_CMP(R[0], 0x6u);
 L_ce50:
-    I(0xce50u);
+    I_(0xce50u);
     if (C_NE) {
         LDR_(0, R[4], 0x4u, 1, 1, 0, -1);
     }
 L_ce54:
-    I(0xce54u);
+    I_(0xce54u);
     if (C_EQ) {
         LDR_(0, R[4], 0x10u, 1, 1, 0, -1);
     }
 L_ce58:
-    I(0xce58u);
+    I_(0xce58u);
     R[14] = 0xce5cu | PSR();
     CALL(Runimage_c6d4, 0xc6d4u, 0xce5cu);
 L_ce5c:
-    I(0xce5cu);
+    I_(0xce5cu);
     DP_MOVS(5, R[0], CF);
 L_ce60:
-    I(0xce60u);
+    I_(0xce60u);
     if (C_EQ) {
         goto L_cee4;
     }
 L_ce64:
-    I(0xce64u);
+    I_(0xce64u);
     LDR_(0, R[4], 0x0u, 1, 1, 0, -1);
 L_ce68:
-    I(0xce68u);
+    I_(0xce68u);
     DP_CMP(R[0], 0x6u);
 L_ce6c:
-    I(0xce6cu);
+    I_(0xce6cu);
     if (C_EQ) {
         goto L_ce90;
     }
 L_ce70:
-    I(0xce70u);
+    I_(0xce70u);
     DP_CMP(R[0], 0x8u);
 L_ce74:
-    I(0xce74u);
+    I_(0xce74u);
     if (C_EQ) {
         goto L_ce88;
     }
 L_ce78:
-    I(0xce78u);
+    I_(0xce78u);
     DP_CMP(R[0], 0xbu);
 L_ce7c:
-    I(0xce7cu);
+    I_(0xce7cu);
     if (C_EQ) {
         goto L_ce88;
     }
 L_ce80:
-    I(0xce80u);
+    I_(0xce80u);
     DP_CMP(R[0], 0xcu);
 L_ce84:
-    I(0xce84u);
+    I_(0xce84u);
     if (C_NE) {
         goto L_ce98;
     }
 L_ce88:
-    I(0xce88u);
+    I_(0xce88u);
     LDR_(1, R[4], 0x8u, 1, 1, 0, -1);
 L_ce8c:
-    I(0xce8cu);
+    I_(0xce8cu);
     goto L_ce9c;
 L_ce90:
-    I(0xce90u);
+    I_(0xce90u);
     LDR_(1, R[4], 0x14u, 1, 1, 0, -1);
 L_ce94:
-    I(0xce94u);
+    I_(0xce94u);
     goto L_ce9c;
 L_ce98:
-    I(0xce98u);
+    I_(0xce98u);
     DP_MVN(1, 0x0u);
 L_ce9c:
-    I(0xce9cu);
+    I_(0xce9cu);
     DP_CMN(R[1], 0x1u);
 L_cea0:
-    I(0xcea0u);
+    I_(0xcea0u);
     if (C_EQ) {
         goto L_cecc;
     }
 L_cea4:
-    I(0xcea4u);
+    I_(0xcea4u);
     DP_MOV(0, R[5]);
 L_cea8:
-    I(0xcea8u);
+    I_(0xcea8u);
     R[14] = 0xceacu | PSR();
     CALL(Runimage_c6b0, 0xc6b0u, 0xceacu);
 L_ceac:
-    I(0xceacu);
+    I_(0xceacu);
     DP_CMP(R[0], 0x0u);
 L_ceb0:
-    I(0xceb0u);
+    I_(0xceb0u);
     if (C_EQ) {
         goto L_cecc;
     }
 L_ceb4:
-    I(0xceb4u);
+    I_(0xceb4u);
     DP_ADD(0, R[0], 0xcu);
 L_ceb8:
-    I(0xceb8u);
+    I_(0xceb8u);
     DP_MOV(1, R[4]);
 L_cebc:
-    I(0xcebcu);
+    I_(0xcebcu);
     R[14] = 0xcec0u | PSR();
     CALL(Runimage_cdac, 0xcdacu, 0xcec0u);
 L_cec0:
-    I(0xcec0u);
+    I_(0xcec0u);
     DP_CMP(R[0], 0x0u);
 L_cec4:
-    I(0xcec4u);
+    I_(0xcec4u);
     if (C_NE) {
         DP_MOV(0, 0x1u);
     }
 L_cec8:
-    I(0xcec8u);
+    I_(0xcec8u);
     if (C_NE) {
         LDM_BEGIN(R[11] - 20)  LDM_R(4) LDM_R(5) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
         LEAVE();
     }
 L_cecc:
-    I(0xceccu);
+    I_(0xceccu);
     DP_ADD(0, R[5], 0x14u);
 L_ced0:
-    I(0xced0u);
+    I_(0xced0u);
     DP_MOV(1, R[4]);
 L_ced4:
-    I(0xced4u);
+    I_(0xced4u);
     R[14] = 0xced8u | PSR();
     CALL(Runimage_cdac, 0xcdacu, 0xced8u);
 L_ced8:
-    I(0xced8u);
+    I_(0xced8u);
     DP_CMP(R[0], 0x0u);
 L_cedc:
-    I(0xcedcu);
+    I_(0xcedcu);
     if (C_NE) {
         DP_MOV(0, 0x1u);
     }
 L_cee0:
-    I(0xcee0u);
+    I_(0xcee0u);
     if (C_NE) {
         LDM_BEGIN(R[11] - 20)  LDM_R(4) LDM_R(5) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
         LEAVE();
     }
 L_cee4:
-    I(0xcee4u);
+    I_(0xcee4u);
     DP_MOV(0, R[4]);
 L_cee8:
-    I(0xcee8u);
+    I_(0xcee8u);
     DP_MOV(1, 0x0u);
 L_ceec:
-    I(0xceecu);
+    I_(0xceecu);
     LDM_BEGIN(R[11] - 20)  LDM_R(4) LDM_R(5) LDM_R(11) LDM_R(13) LDM_R(14) XFER_END;
 L_cef0:
-    I(0xcef0u);
+    I_(0xcef0u);
     goto L_cd3c;
 L_cef4:
-    I(0xcef4u);
+    I_(0xcef4u);
     DP_MOV(12, R[13]);
 L_cef8:
-    I(0xcef8u);
+    I_(0xcef8u);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xcf04u | PSR())) R[13] = R[13] - 20; XFER_END;
 L_cefc:
-    I(0xcefcu);
+    I_(0xcefcu);
     DP_SUB(11, R[12], 0x4u);
 L_cf00:
-    I(0xcf00u);
+    I_(0xcf00u);
     DP_CMP(R[13], R[10]);
 L_cf04:
-    I(0xcf04u);
+    I_(0xcf04u);
     if (C_LT) {
         R[14] = 0xcf08u | PSR();
         npc = 0xe9acu; CALLI(0xcf08u);
     }
 L_cf08:
-    I(0xcf08u);
+    I_(0xcf08u);
     DP_MOV(4, R[0]);
 L_cf0c:
-    I(0xcf0cu);
+    I_(0xcf0cu);
     LDR_(0, R[4], 0x4u, 1, 1, 0, -1);
 L_cf10:
-    I(0xcf10u);
+    I_(0xcf10u);
     R[14] = 0xcf14u | PSR();
     CALL(Runimage_c6d4, 0xc6d4u, 0xcf14u);
 L_cf14:
-    I(0xcf14u);
+    I_(0xcf14u);
     DP_CMP(R[0], 0x0u);
 L_cf18:
-    I(0xcf18u);
+    I_(0xcf18u);
     if (C_EQ) {
         goto L_cf34;
     }
 L_cf1c:
-    I(0xcf1cu);
+    I_(0xcf1cu);
     DP_ADD(0, R[0], 0x14u);
 L_cf20:
-    I(0xcf20u);
+    I_(0xcf20u);
     DP_MOV(1, R[4]);
 L_cf24:
-    I(0xcf24u);
+    I_(0xcf24u);
     R[14] = 0xcf28u | PSR();
     CALL(Runimage_cdac, 0xcdacu, 0xcf28u);
 L_cf28:
-    I(0xcf28u);
+    I_(0xcf28u);
     DP_CMP(R[0], 0x0u);
 L_cf2c:
-    I(0xcf2cu);
+    I_(0xcf2cu);
     if (C_NE) {
         DP_MOV(0, 0x1u);
     }
 L_cf30:
-    I(0xcf30u);
+    I_(0xcf30u);
     if (C_NE) {
         LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
         LEAVE();
     }
 L_cf34:
-    I(0xcf34u);
+    I_(0xcf34u);
     DP_MOV(0, R[4]);
 L_cf38:
-    I(0xcf38u);
+    I_(0xcf38u);
     DP_MOV(1, 0x0u);
 L_cf3c:
-    I(0xcf3cu);
+    I_(0xcf3cu);
     LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_R(14) XFER_END;
 L_cf40:
-    I(0xcf40u);
+    I_(0xcf40u);
     goto L_cd3c;
     JUMP(0xcf44u);
 L_d034:
-    I(0xd034u);
+    I_(0xd034u);
     LDR_(2, R[0], 0x0u, 1, 1, 0, -1);
 L_d038:
-    I(0xd038u);
+    I_(0xd038u);
     LDR_(1, 0xd040u, 0x1cu, 1, 0, 0, -1);
 L_d03c:
-    I(0xd03cu);
+    I_(0xd03cu);
     LDR_(2, R[1], SH_LSL(R[2], 2), 1, 1, 0, -1);
 L_d040:
-    I(0xd040u);
+    I_(0xd040u);
     DP_MOV(1, 0x0u);
 L_d044:
-    I(0xd044u);
+    I_(0xd044u);
     SETPC(R[2], 0);
     LEAVE();
 L_d048:
-    I(0xd048u);
+    I_(0xd048u);
     DP_MOV(12, R[13]);
 L_d04c:
-    I(0xd04cu);
+    I_(0xd04cu);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xd058u | PSR())) R[13] = R[13] - 20; XFER_END;
 L_d050:
-    I(0xd050u);
+    I_(0xd050u);
     DP_SUB(11, R[12], 0x4u);
 L_d054:
-    I(0xd054u);
+    I_(0xd054u);
     DP_CMP(R[13], R[10]);
 L_d058:
-    I(0xd058u);
+    I_(0xd058u);
     if (C_LT) {
         R[14] = 0xd05cu | PSR();
         npc = 0xe9acu; CALLI(0xd05cu);
     }
 L_d05c:
-    I(0xd05cu);
+    I_(0xd05cu);
     LDR_(4, 0xd064u, 0x1cu, 1, 1, 0, -1);
 L_d060:
-    I(0xd060u);
+    I_(0xd060u);
     DP_MOV(1, R[4]);
 L_d064:
-    I(0xd064u);
+    I_(0xd064u);
     LDR_(0, 0xd06cu, 0xb4cu, 1, 0, 0, -1);
 L_d068:
-    I(0xd068u);
+    I_(0xd068u);
     LDR_(0, R[0], 0x0u, 1, 1, 0, -1);
 L_d06c:
-    I(0xd06cu);
+    I_(0xd06cu);
     DP_MOV(2, 0x0u);
 L_d070:
-    I(0xd070u);
+    I_(0xd070u);
     R[14] = 0xd074u | PSR();
     CALL(Runimage_e480, 0xe480u, 0xd074u);
 L_d074:
-    I(0xd074u);
+    I_(0xd074u);
     DP_MOV(0, R[4]);
 L_d078:
-    I(0xd078u);
+    I_(0xd078u);
     LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_R(14) XFER_END;
 L_d07c:
-    I(0xd07cu);
+    I_(0xd07cu);
     goto L_d034;
     JUMP(0xd080u);
 }
@@ -1171,75 +1171,75 @@ void Runimage_d28c(uint32_t e)
     default: bad_entry(0xd28cu, e); return;
     }
 L_d28c:
-    I(0xd28cu);
+    I_(0xd28cu);
     DP_MOV(12, R[13]);
 L_d290:
-    I(0xd290u);
+    I_(0xd290u);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xd29cu | PSR())) R[13] = R[13] - 20; XFER_END;
 L_d294:
-    I(0xd294u);
+    I_(0xd294u);
     DP_SUB(11, R[12], 0x4u);
 L_d298:
-    I(0xd298u);
+    I_(0xd298u);
     DP_CMP(R[13], R[10]);
 L_d29c:
-    I(0xd29cu);
+    I_(0xd29cu);
     if (C_LT) {
         R[14] = 0xd2a0u | PSR();
         npc = 0xe9acu; CALLI(0xd2a0u);
     }
 L_d2a0:
-    I(0xd2a0u);
+    I_(0xd2a0u);
     DP_MOV(3, 0x0u);
 L_d2a4:
-    I(0xd2a4u);
+    I_(0xd2a4u);
     STM_BEGIN(R[13] - 4) STM_V(R[3]) R[13] = R[13] - 4; XFER_END;
 L_d2a8:
-    I(0xd2a8u);
+    I_(0xd2a8u);
     LDR_(4, 0xd2b0u, 0x34u, 1, 1, 0, -1);
 L_d2ac:
-    I(0xd2acu);
+    I_(0xd2acu);
     DP_MOV(3, R[4]);
 L_d2b0:
-    I(0xd2b0u);
+    I_(0xd2b0u);
     DP_MVN(2, 0x62u);
 L_d2b4:
-    I(0xd2b4u);
+    I_(0xd2b4u);
     DP_MVN(1, 0x62u);
 L_d2b8:
-    I(0xd2b8u);
+    I_(0xd2b8u);
     DP_MOV(0, 0x11u);
 L_d2bc:
-    I(0xd2bcu);
+    I_(0xd2bcu);
     R[14] = 0xd2c0u | PSR();
     CALL(Runimage_c6fc, 0xc6fcu, 0xd2c0u);
 L_d2c0:
-    I(0xd2c0u);
+    I_(0xd2c0u);
     DP_ADD(13, R[13], 0x4u);
 L_d2c4:
-    I(0xd2c4u);
+    I_(0xd2c4u);
     DP_MOV(3, 0x0u);
 L_d2c8:
-    I(0xd2c8u);
+    I_(0xd2c8u);
     STM_BEGIN(R[13] - 4) STM_V(R[3]) R[13] = R[13] - 4; XFER_END;
 L_d2cc:
-    I(0xd2ccu);
+    I_(0xd2ccu);
     DP_MOV(3, R[4]);
 L_d2d0:
-    I(0xd2d0u);
+    I_(0xd2d0u);
     DP_MVN(2, 0x62u);
 L_d2d4:
-    I(0xd2d4u);
+    I_(0xd2d4u);
     DP_MVN(1, 0x62u);
 L_d2d8:
-    I(0xd2d8u);
+    I_(0xd2d8u);
     DP_MOV(0, 0x12u);
 L_d2dc:
-    I(0xd2dcu);
+    I_(0xd2dcu);
     R[14] = 0xd2e0u | PSR();
     CALL(Runimage_c6fc, 0xc6fcu, 0xd2e0u);
 L_d2e0:
-    I(0xd2e0u);
+    I_(0xd2e0u);
     LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xd2e4u);
@@ -1286,129 +1286,129 @@ void Runimage_d670(uint32_t e)
     default: bad_entry(0xd670u, e); return;
     }
 L_d670:
-    I(0xd670u);
+    I_(0xd670u);
     DP_MOV(12, R[13]);
 L_d674:
-    I(0xd674u);
+    I_(0xd674u);
     STM_BEGIN(R[13] - 28) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xd680u | PSR())) R[13] = R[13] - 28; XFER_END;
 L_d678:
-    I(0xd678u);
+    I_(0xd678u);
     DP_SUB(11, R[12], 0x4u);
 L_d67c:
-    I(0xd67cu);
+    I_(0xd67cu);
     DP_CMP(R[13], R[10]);
 L_d680:
-    I(0xd680u);
+    I_(0xd680u);
     if (C_LT) {
         R[14] = 0xd684u | PSR();
         npc = 0xe9acu; CALLI(0xd684u);
     }
 L_d684:
-    I(0xd684u);
+    I_(0xd684u);
     DP_MOV(4, R[0]);
 L_d688:
-    I(0xd688u);
+    I_(0xd688u);
     DP_SUB(13, R[13], 0x4u);
 L_d68c:
-    I(0xd68cu);
+    I_(0xd68cu);
     DP_MOV(0, R[4]);
 L_d690:
-    I(0xd690u);
+    I_(0xd690u);
     R[14] = 0xd694u | PSR();
     CALL(Runimage_e0ec, 0xe0ecu, 0xd694u);
 L_d694:
-    I(0xd694u);
+    I_(0xd694u);
     DP_MOVS(6, R[0], CF);
 L_d698:
-    I(0xd698u);
+    I_(0xd698u);
     if (C_EQ) {
         DP_MOV(0, 0x0u);
     }
 L_d69c:
-    I(0xd69cu);
+    I_(0xd69cu);
     if (C_EQ) {
         LDM_BEGIN(R[11] - 24)  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
         LEAVE();
     }
 L_d6a0:
-    I(0xd6a0u);
+    I_(0xd6a0u);
     DP_MOV(1, R[13]);
 L_d6a4:
-    I(0xd6a4u);
+    I_(0xd6a4u);
     DP_MOV(0, R[6]);
 L_d6a8:
-    I(0xd6a8u);
+    I_(0xd6a8u);
     R[14] = 0xd6acu | PSR();
     CALL(Runimage_e5f0, 0xe5f0u, 0xd6acu);
 L_d6ac:
-    I(0xd6acu);
+    I_(0xd6acu);
     DP_MOV(0, 0x20u);
 L_d6b0:
-    I(0xd6b0u);
+    I_(0xd6b0u);
     R[14] = 0xd6b4u | PSR();
     npc = 0xeaacu; CALLI(0xd6b4u);
 L_d6b4:
-    I(0xd6b4u);
+    I_(0xd6b4u);
     DP_MOVS(5, R[0], CF);
 L_d6b8:
-    I(0xd6b8u);
+    I_(0xd6b8u);
     if (C_EQ) {
         DP_ADD(1, 0xd6c0u, 0x3cu);
     }
 L_d6bc:
-    I(0xd6bcu);
+    I_(0xd6bcu);
     if (C_EQ) {
         DP_MOV(0, 0x1u);
     }
 L_d6c0:
-    I(0xd6c0u);
+    I_(0xd6c0u);
     if (C_EQ) {
         R[14] = 0xd6c4u | PSR();
         CALL(Runimage_df60, 0xdf60u, 0xd6c4u);
     }
 L_d6c4:
-    I(0xd6c4u);
+    I_(0xd6c4u);
     DP_MOV(1, R[5]);
 L_d6c8:
-    I(0xd6c8u);
+    I_(0xd6c8u);
     LDR_(0, 0xd6d0u, 0x50u, 1, 1, 0, -1);
 L_d6cc:
-    I(0xd6ccu);
+    I_(0xd6ccu);
     R[14] = 0xd6d0u | PSR();
     CALL(Runimage_e08c, 0xe08cu, 0xd6d0u);
 L_d6d0:
-    I(0xd6d0u);
+    I_(0xd6d0u);
     DP_ADD(0, R[5], 0xcu);
 L_d6d4:
-    I(0xd6d4u);
+    I_(0xd6d4u);
     DP_MOV(1, R[4]);
 L_d6d8:
-    I(0xd6d8u);
+    I_(0xd6d8u);
     DP_MOV(2, 0xcu);
 L_d6dc:
-    I(0xd6dcu);
+    I_(0xd6dcu);
     R[14] = 0xd6e0u | PSR();
     npc = 0xea40u; CALLI(0xd6e0u);
 L_d6e0:
-    I(0xd6e0u);
+    I_(0xd6e0u);
     DP_MOV(0, 0x0u);
 L_d6e4:
-    I(0xd6e4u);
+    I_(0xd6e4u);
     STR_(R[0], R[5], 0x18u, 1, 1, 1, -1);
 L_d6e8:
-    I(0xd6e8u);
+    I_(0xd6e8u);
     LDR_(0, R[13], 0x0u, 1, 1, 0, -1);
 L_d6ec:
-    I(0xd6ecu);
+    I_(0xd6ecu);
     STR_(R[0], R[5], 0x8u, 1, 1, 0, -1);
 L_d6f0:
-    I(0xd6f0u);
+    I_(0xd6f0u);
     STR_(R[6], R[5], 0x1cu, 1, 1, 0, -1);
 L_d6f4:
-    I(0xd6f4u);
+    I_(0xd6f4u);
     LDR_(0, R[13], 0x4u, 0, 1, 0, 13);
 L_d6f8:
-    I(0xd6f8u);
+    I_(0xd6f8u);
     LDM_BEGIN(R[11] - 24)  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xd6fcu);
@@ -1462,150 +1462,150 @@ void Runimage_d854(uint32_t e)
     default: bad_entry(0xd854u, e); return;
     }
 L_d854:
-    I(0xd854u);
+    I_(0xd854u);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[14]) R[13] = R[13] - 20; XFER_END;
 L_d858:
-    I(0xd858u);
+    I_(0xd858u);
     DP_MOV(5, 0x0u);
 L_d85c:
-    I(0xd85cu);
+    I_(0xd85cu);
     DP_MOV(3, R[5]);
 L_d860:
-    I(0xd860u);
+    I_(0xd860u);
     DP_MOV(12, R[5]);
 L_d864:
-    I(0xd864u);
+    I_(0xd864u);
     DP_MOV(4, R[5]);
 L_d868:
-    I(0xd868u);
+    I_(0xd868u);
     DP_MOV(6, 0x1u);
 L_d86c:
-    I(0xd86cu);
+    I_(0xd86cu);
     DP_MOV(14, R[6]);
 L_d870:
-    I(0xd870u);
+    I_(0xd870u);
     DP_MOV(7, R[0]);
 L_d874:
-    I(0xd874u);
+    I_(0xd874u);
     goto L_d8d4;
 L_d878:
-    I(0xd878u);
+    I_(0xd878u);
     DP_CMP(R[0], 0x2cu);
 L_d87c:
-    I(0xd87cu);
+    I_(0xd87cu);
     if (C_EQ) {
         goto L_d888;
     }
 L_d880:
-    I(0xd880u);
+    I_(0xd880u);
     DP_CMP(R[0], 0x7cu);
 L_d884:
-    I(0xd884u);
+    I_(0xd884u);
     if (C_NE) {
         goto L_d8a0;
     }
 L_d888:
-    I(0xd888u);
+    I_(0xd888u);
     DP_CMP(R[3], R[12]);
 L_d88c:
-    I(0xd88cu);
+    I_(0xd88cu);
     if (C_GT) {
         DP_MOV(12, R[3]);
     }
 L_d890:
-    I(0xd890u);
+    I_(0xd890u);
     DP_ADD(4, R[4], 0x1u);
 L_d894:
-    I(0xd894u);
+    I_(0xd894u);
     DP_MOV(3, R[5]);
 L_d898:
-    I(0xd898u);
+    I_(0xd898u);
     DP_MOV(14, R[6]);
 L_d89c:
-    I(0xd89cu);
+    I_(0xd89cu);
     goto L_d8d0;
 L_d8a0:
-    I(0xd8a0u);
+    I_(0xd8a0u);
     DP_CMP(R[14], 0x0u);
 L_d8a4:
-    I(0xd8a4u);
+    I_(0xd8a4u);
     if (C_EQ) {
         goto L_d8cc;
     }
 L_d8a8:
-    I(0xd8a8u);
+    I_(0xd8a8u);
     DP_CMP(R[0], 0x21u);
 L_d8ac:
-    I(0xd8acu);
+    I_(0xd8acu);
     if (C_EQ) {
         goto L_d8d0;
     }
 L_d8b0:
-    I(0xd8b0u);
+    I_(0xd8b0u);
     DP_CMP(R[0], 0x3eu);
 L_d8b4:
-    I(0xd8b4u);
+    I_(0xd8b4u);
     if (C_EQ) {
         goto L_d8d0;
     }
 L_d8b8:
-    I(0xd8b8u);
+    I_(0xd8b8u);
     DP_CMP(R[0], 0x7eu);
 L_d8bc:
-    I(0xd8bcu);
+    I_(0xd8bcu);
     if (C_EQ) {
         goto L_d8d0;
     }
 L_d8c0:
-    I(0xd8c0u);
+    I_(0xd8c0u);
     DP_CMP(R[0], 0x20u);
 L_d8c4:
-    I(0xd8c4u);
+    I_(0xd8c4u);
     if (C_EQ) {
         goto L_d8d0;
     }
 L_d8c8:
-    I(0xd8c8u);
+    I_(0xd8c8u);
     DP_MOV(14, R[5]);
 L_d8cc:
-    I(0xd8ccu);
+    I_(0xd8ccu);
     DP_ADD(3, R[3], 0x1u);
 L_d8d0:
-    I(0xd8d0u);
+    I_(0xd8d0u);
     DP_ADD(7, R[7], 0x1u);
 L_d8d4:
-    I(0xd8d4u);
+    I_(0xd8d4u);
     LDR_(0, R[7], 0x0u, 1, 1, 1, -1);
 L_d8d8:
-    I(0xd8d8u);
+    I_(0xd8d8u);
     DP_CMP(R[0], 0x0u);
 L_d8dc:
-    I(0xd8dcu);
+    I_(0xd8dcu);
     if (C_NE) {
         goto L_d878;
     }
 L_d8e0:
-    I(0xd8e0u);
+    I_(0xd8e0u);
     DP_ADD(0, R[4], 0x1u);
 L_d8e4:
-    I(0xd8e4u);
+    I_(0xd8e4u);
     STR_(R[0], R[1], 0x0u, 1, 1, 0, -1);
 L_d8e8:
-    I(0xd8e8u);
+    I_(0xd8e8u);
     DP_CMP(R[3], R[12]);
 L_d8ec:
-    I(0xd8ecu);
+    I_(0xd8ecu);
     if (C_GT) {
         DP_MOV(12, R[3]);
     }
 L_d8f0:
-    I(0xd8f0u);
+    I_(0xd8f0u);
     DP_ADD(0, R[12], 0x1u);
 L_d8f4:
-    I(0xd8f4u);
+    I_(0xd8f4u);
     STR_(R[0], R[2], 0x0u, 1, 1, 0, -1);
 L_d8f8:
-    I(0xd8f8u);
+    I_(0xd8f8u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 20;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xd8fcu);
@@ -1691,237 +1691,237 @@ void Runimage_dc28(uint32_t e)
     default: bad_entry(0xdc28u, e); return;
     }
 L_dc28:
-    I(0xdc28u);
+    I_(0xdc28u);
     DP_MOV(12, R[13]);
 L_dc2c:
-    I(0xdc2cu);
+    I_(0xdc2cu);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xdc38u | PSR())) R[13] = R[13] - 20; XFER_END;
 L_dc30:
-    I(0xdc30u);
+    I_(0xdc30u);
     DP_SUB(11, R[12], 0x4u);
 L_dc34:
-    I(0xdc34u);
+    I_(0xdc34u);
     DP_CMP(R[13], R[10]);
 L_dc38:
-    I(0xdc38u);
+    I_(0xdc38u);
     if (C_LT) {
         R[14] = 0xdc3cu | PSR();
         npc = 0xe9acu; CALLI(0xdc3cu);
     }
 L_dc3c:
-    I(0xdc3cu);
+    I_(0xdc3cu);
     DP_MOV(4, R[0]);
 L_dc40:
-    I(0xdc40u);
+    I_(0xdc40u);
     DP_SUB(13, R[13], 0x48u);
 L_dc44:
-    I(0xdc44u);
+    I_(0xdc44u);
     STR_(R[1], R[13], 0x24u, 1, 1, 0, -1);
 L_dc48:
-    I(0xdc48u);
+    I_(0xdc48u);
     DP_MOV(0, 0x17000000u);
 L_dc4c:
-    I(0xdc4cu);
+    I_(0xdc4cu);
     DP_ADD(0, R[0], 0x1au);
 L_dc50:
-    I(0xdc50u);
+    I_(0xdc50u);
     DP_ADD(0, R[0], 0x3000u);
 L_dc54:
-    I(0xdc54u);
+    I_(0xdc54u);
     STR_(R[0], R[13], 0x38u, 1, 1, 0, -1);
 L_dc58:
-    I(0xdc58u);
+    I_(0xdc58u);
     DP_ADD(0, R[13], 0x3cu);
 L_dc5c:
-    I(0xdc5cu);
+    I_(0xdc5cu);
     DP_MOV(1, R[4]);
 L_dc60:
-    I(0xdc60u);
+    I_(0xdc60u);
     DP_MOV(2, 0xcu);
 L_dc64:
-    I(0xdc64u);
+    I_(0xdc64u);
     R[14] = 0xdc68u | PSR();
     npc = 0xea40u; CALLI(0xdc68u);
 L_dc68:
-    I(0xdc68u);
+    I_(0xdc68u);
     DP_MOV(0, 0x0u);
 L_dc6c:
-    I(0xdc6cu);
+    I_(0xdc6cu);
     STR_(R[0], R[13], 0x47u, 1, 1, 1, -1);
 L_dc70:
-    I(0xdc70u);
+    I_(0xdc70u);
     STR_(R[0], R[13], 0x2cu, 1, 1, 0, -1);
 L_dc74:
-    I(0xdc74u);
+    I_(0xdc74u);
     STR_(R[0], R[13], 0x28u, 1, 1, 0, -1);
 L_dc78:
-    I(0xdc78u);
+    I_(0xdc78u);
     DP_ADD(1, R[13], 0x18u);
 L_dc7c:
-    I(0xdc7cu);
+    I_(0xdc7cu);
     DP_ADD(0, R[13], 0x1cu);
 L_dc80:
-    I(0xdc80u);
+    I_(0xdc80u);
     R[14] = 0xdc84u | PSR();
     CALL(Runimage_e6a0, 0xe6a0u, 0xdc84u);
 L_dc84:
-    I(0xdc84u);
+    I_(0xdc84u);
     DP_ADD(2, R[13], 0x8u);
 L_dc88:
-    I(0xdc88u);
+    I_(0xdc88u);
     DP_MOV(1, R[4]);
 L_dc8c:
-    I(0xdc8cu);
+    I_(0xdc8cu);
     LDR_(0, R[13], 0x18u, 1, 1, 0, -1);
 L_dc90:
-    I(0xdc90u);
+    I_(0xdc90u);
     R[14] = 0xdc94u | PSR();
     CALL(Runimage_e6c0, 0xe6c0u, 0xdc94u);
 L_dc94:
-    I(0xdc94u);
+    I_(0xdc94u);
     DP_CMP(R[0], 0x0u);
 L_dc98:
-    I(0xdc98u);
+    I_(0xdc98u);
     if (C_NE) {
         goto L_dd30;
     }
 L_dc9c:
-    I(0xdc9cu);
+    I_(0xdc9cu);
     DP_ADD(3, R[13], 0x4u);
 L_dca0:
-    I(0xdca0u);
+    I_(0xdca0u);
     DP_MOV(2, 0x0u);
 L_dca4:
-    I(0xdca4u);
+    I_(0xdca4u);
     DP_MOV(1, 0x0u);
 L_dca8:
-    I(0xdca8u);
+    I_(0xdca8u);
     DP_MOV(0, 0x0u);
 L_dcac:
-    I(0xdcacu);
+    I_(0xdcacu);
     STM_BEGIN(R[13] - 16) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) R[13] = R[13] - 16; XFER_END;
 L_dcb0:
-    I(0xdcb0u);
+    I_(0xdcb0u);
     DP_MOV(3, 0x4u);
 L_dcb4:
-    I(0xdcb4u);
+    I_(0xdcb4u);
     STM_BEGIN(R[13] - 4) STM_V(R[3]) R[13] = R[13] - 4; XFER_END;
 L_dcb8:
-    I(0xdcb8u);
+    I_(0xdcb8u);
     LDR_(3, R[13], 0x28u, 1, 1, 0, -1);
 L_dcbc:
-    I(0xdcbcu);
+    I_(0xdcbcu);
     DP_MOV(2, 0x35u);
 L_dcc0:
-    I(0xdcc0u);
+    I_(0xdcc0u);
     DP_ADD(2, R[2], 0x20000u);
 L_dcc4:
-    I(0xdcc4u);
+    I_(0xdcc4u);
     DP_MOV(1, 0x3u);
 L_dcc8:
-    I(0xdcc8u);
+    I_(0xdcc8u);
     DP_MOV(0, 0x3u);
 L_dccc:
-    I(0xdcccu);
+    I_(0xdcccu);
     R[14] = 0xdcd0u | PSR();
     CALL(Runimage_c110, 0xc110u, 0xdcd0u);
 L_dcd0:
-    I(0xdcd0u);
+    I_(0xdcd0u);
     DP_ADD(13, R[13], 0x14u);
 L_dcd4:
-    I(0xdcd4u);
+    I_(0xdcd4u);
     DP_MOV(3, R[13]);
 L_dcd8:
-    I(0xdcd8u);
+    I_(0xdcd8u);
     DP_MOV(2, 0x0u);
 L_dcdc:
-    I(0xdcdcu);
+    I_(0xdcdcu);
     DP_MOV(1, 0x0u);
 L_dce0:
-    I(0xdce0u);
+    I_(0xdce0u);
     DP_MOV(0, 0x0u);
 L_dce4:
-    I(0xdce4u);
+    I_(0xdce4u);
     STM_BEGIN(R[13] - 16) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) R[13] = R[13] - 16; XFER_END;
 L_dce8:
-    I(0xdce8u);
+    I_(0xdce8u);
     DP_MOV(3, 0x5u);
 L_dcec:
-    I(0xdcecu);
+    I_(0xdcecu);
     STM_BEGIN(R[13] - 4) STM_V(R[3]) R[13] = R[13] - 4; XFER_END;
 L_dcf0:
-    I(0xdcf0u);
+    I_(0xdcf0u);
     LDR_(3, R[13], 0x28u, 1, 1, 0, -1);
 L_dcf4:
-    I(0xdcf4u);
+    I_(0xdcf4u);
     DP_MOV(2, 0x35u);
 L_dcf8:
-    I(0xdcf8u);
+    I_(0xdcf8u);
     DP_ADD(2, R[2], 0x20000u);
 L_dcfc:
-    I(0xdcfcu);
+    I_(0xdcfcu);
     DP_MOV(1, 0x3u);
 L_dd00:
-    I(0xdd00u);
+    I_(0xdd00u);
     DP_MOV(0, 0x3u);
 L_dd04:
-    I(0xdd04u);
+    I_(0xdd04u);
     R[14] = 0xdd08u | PSR();
     CALL(Runimage_c110, 0xc110u, 0xdd08u);
 L_dd08:
-    I(0xdd08u);
+    I_(0xdd08u);
     DP_ADD(13, R[13], 0x14u);
 L_dd0c:
-    I(0xdd0cu);
+    I_(0xdd0cu);
     LDR_(0, R[13], 0x8u, 1, 1, 0, -1);
 L_dd10:
-    I(0xdd10u);
+    I_(0xdd10u);
     LDR_(1, R[13], 0x4u, 1, 1, 0, -1);
 L_dd14:
-    I(0xdd14u);
+    I_(0xdd14u);
     DP_MOV(0, SHR(R[0], 0, (R[1] & 0xFF)));
 L_dd18:
-    I(0xdd18u);
+    I_(0xdd18u);
     STR_(R[0], R[13], 0x30u, 1, 1, 0, -1);
 L_dd1c:
-    I(0xdd1cu);
+    I_(0xdd1cu);
     LDR_(0, R[13], 0x0u, 1, 1, 0, -1);
 L_dd20:
-    I(0xdd20u);
+    I_(0xdd20u);
     LDR_(1, R[13], 0xcu, 1, 1, 0, -1);
 L_dd24:
-    I(0xdd24u);
+    I_(0xdd24u);
     DP_MOV(0, SHR(R[1], 0, (R[0] & 0xFF)));
 L_dd28:
-    I(0xdd28u);
+    I_(0xdd28u);
     STR_(R[0], R[13], 0x34u, 1, 1, 0, -1);
 L_dd2c:
-    I(0xdd2cu);
+    I_(0xdd2cu);
     goto L_dd3c;
 L_dd30:
-    I(0xdd30u);
+    I_(0xdd30u);
     DP_MOV(0, 0x44u);
 L_dd34:
-    I(0xdd34u);
+    I_(0xdd34u);
     STR_(R[0], R[13], 0x34u, 1, 1, 0, -1);
 L_dd38:
-    I(0xdd38u);
+    I_(0xdd38u);
     STR_(R[0], R[13], 0x30u, 1, 1, 0, -1);
 L_dd3c:
-    I(0xdd3cu);
+    I_(0xdd3cu);
     DP_ADD(1, R[13], 0x20u);
 L_dd40:
-    I(0xdd40u);
+    I_(0xdd40u);
     DP_ADD(0, R[13], 0x24u);
 L_dd44:
-    I(0xdd44u);
+    I_(0xdd44u);
     R[14] = 0xdd48u | PSR();
     CALL(Runimage_e6e4, 0xe6e4u, 0xdd48u);
 L_dd48:
-    I(0xdd48u);
+    I_(0xdd48u);
     LDR_(0, R[13], 0x20u, 1, 1, 0, -1);
 L_dd4c:
-    I(0xdd4cu);
+    I_(0xdd4cu);
     LDM_BEGIN(R[11] - 16)  LDM_R(4) LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xdd50u);
@@ -1956,78 +1956,78 @@ void Runimage_de08(uint32_t e)
     default: bad_entry(0xde08u, e); return;
     }
 L_de08:
-    I(0xde08u);
+    I_(0xde08u);
     DP_MOV(12, R[13]);
 L_de0c:
-    I(0xde0cu);
+    I_(0xde0cu);
     STM_BEGIN(R[13] - 16) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) R[13] = R[13] - 16; XFER_END;
 L_de10:
-    I(0xde10u);
+    I_(0xde10u);
     STM_BEGIN(R[13] - 16) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xde1cu | PSR())) R[13] = R[13] - 16; XFER_END;
 L_de14:
-    I(0xde14u);
+    I_(0xde14u);
     DP_SUB(11, R[12], 0x14u);
 L_de18:
-    I(0xde18u);
+    I_(0xde18u);
     DP_SUB(12, R[13], 0x10cu);
 L_de1c:
-    I(0xde1cu);
+    I_(0xde1cu);
     DP_CMP(R[12], R[10]);
 L_de20:
-    I(0xde20u);
+    I_(0xde20u);
     if (C_LT) {
         R[14] = 0xde24u | PSR();
         npc = 0xe9b0u; CALLI(0xde24u);
     }
 L_de24:
-    I(0xde24u);
+    I_(0xde24u);
     DP_SUB(13, R[13], 0x104u);
 L_de28:
-    I(0xde28u);
+    I_(0xde28u);
     DP_ADD(0, R[11], 0xcu);
 L_de2c:
-    I(0xde2cu);
+    I_(0xde2cu);
     STR_(R[0], R[13], 0x100u, 1, 1, 0, -1);
 L_de30:
-    I(0xde30u);
+    I_(0xde30u);
     DP_ADD(0, R[13], 0x4u);
 L_de34:
-    I(0xde34u);
+    I_(0xde34u);
     DP_ADD(2, R[13], 0x100u);
 L_de38:
-    I(0xde38u);
+    I_(0xde38u);
     LDR_(1, R[11], 0x8u, 1, 1, 0, -1);
 L_de3c:
-    I(0xde3cu);
+    I_(0xde3cu);
     R[14] = 0xde40u | PSR();
     npc = 0xeb28u; CALLI(0xde40u);
 L_de40:
-    I(0xde40u);
+    I_(0xde40u);
     DP_MVN(0, 0xffu);
 L_de44:
-    I(0xde44u);
+    I_(0xde44u);
     STR_(R[0], R[13], 0x100u, 1, 1, 0, -1);
 L_de48:
-    I(0xde48u);
+    I_(0xde48u);
     LDR_(0, R[11], 0x4u, 1, 1, 0, -1);
 L_de4c:
-    I(0xde4cu);
+    I_(0xde4cu);
     STR_(R[0], R[13], 0x0u, 1, 1, 0, -1);
 L_de50:
-    I(0xde50u);
+    I_(0xde50u);
     DP_MOV(1, 0x1u);
 L_de54:
-    I(0xde54u);
+    I_(0xde54u);
     LDR_(2, 0xde5cu, 0x8u, 1, 1, 0, -1);
 L_de58:
-    I(0xde58u);
+    I_(0xde58u);
     DP_MOV(0, R[13]);
 L_de5c:
-    I(0xde5cu);
+    I_(0xde5cu);
     R[14] = 0xde60u | PSR();
     CALL(Runimage_e71c, 0xe71cu, 0xde60u);
 L_de60:
-    I(0xde60u);
+    I_(0xde60u);
     LDM_BEGIN(R[11] - 12)  LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xde64u);
@@ -2067,99 +2067,99 @@ void Runimage_dfe0(uint32_t e)
     default: bad_entry(0xdfe0u, e); return;
     }
 L_de68:
-    I(0xde68u);
+    I_(0xde68u);
     DP_MOV(12, R[13]);
 L_de6c:
-    I(0xde6cu);
+    I_(0xde6cu);
     STM_BEGIN(R[13] - 16) STM_V(R[0]) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) R[13] = R[13] - 16; XFER_END;
 L_de70:
-    I(0xde70u);
+    I_(0xde70u);
     STM_BEGIN(R[13] - 16) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xde7cu | PSR())) R[13] = R[13] - 16; XFER_END;
 L_de74:
-    I(0xde74u);
+    I_(0xde74u);
     DP_SUB(11, R[12], 0x14u);
 L_de78:
-    I(0xde78u);
+    I_(0xde78u);
     DP_SUB(12, R[13], 0x108u);
 L_de7c:
-    I(0xde7cu);
+    I_(0xde7cu);
     DP_CMP(R[12], R[10]);
 L_de80:
-    I(0xde80u);
+    I_(0xde80u);
     if (C_LT) {
         R[14] = 0xde84u | PSR();
         npc = 0xe9b0u; CALLI(0xde84u);
     }
 L_de84:
-    I(0xde84u);
+    I_(0xde84u);
     DP_SUB(13, R[13], 0x104u);
 L_de88:
-    I(0xde88u);
+    I_(0xde88u);
     DP_ADD(0, R[11], 0xcu);
 L_de8c:
-    I(0xde8cu);
+    I_(0xde8cu);
     STR_(R[0], R[13], 0x100u, 1, 1, 0, -1);
 L_de90:
-    I(0xde90u);
+    I_(0xde90u);
     DP_ADD(2, R[13], 0x100u);
 L_de94:
-    I(0xde94u);
+    I_(0xde94u);
     LDR_(1, R[11], 0x8u, 1, 1, 0, -1);
 L_de98:
-    I(0xde98u);
+    I_(0xde98u);
     DP_MOV(0, R[13]);
 L_de9c:
-    I(0xde9cu);
+    I_(0xde9cu);
     R[14] = 0xdea0u | PSR();
     npc = 0xeb28u; CALLI(0xdea0u);
 L_dea0:
-    I(0xdea0u);
+    I_(0xdea0u);
     DP_MVN(0, 0xffu);
 L_dea4:
-    I(0xdea4u);
+    I_(0xdea4u);
     STR_(R[0], R[13], 0x100u, 1, 1, 0, -1);
 L_dea8:
-    I(0xdea8u);
+    I_(0xdea8u);
     DP_MOV(3, R[13]);
 L_deac:
-    I(0xdeacu);
+    I_(0xdeacu);
     LDR_(2, 0xdeb4u, 0x50u, 1, 0, 0, -1);
 L_deb0:
-    I(0xdeb0u);
+    I_(0xdeb0u);
     LDR_(0, R[11], 0x4u, 1, 1, 0, -1);
 L_deb4:
-    I(0xdeb4u);
+    I_(0xdeb4u);
     DP_ADD(1, 0xdebcu, 0xcu);
 L_deb8:
-    I(0xdeb8u);
+    I_(0xdeb8u);
     R[14] = 0xdebcu | PSR();
     CALL(Runimage_de08, 0xde08u, 0xdebcu);
 L_debc:
-    I(0xdebcu);
+    I_(0xdebcu);
     DP_MOV(0, 0x1u);
 L_dec0:
-    I(0xdec0u);
+    I_(0xdec0u);
     R[14] = 0xdec4u | PSR();
     npc = 0xeabcu; CALLI(0xdec4u);
 L_dec4:
-    I(0xdec4u);
+    I_(0xdec4u);
     LDM_BEGIN(R[11] - 12)  LDM_R(11) LDM_R(13) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xdec8u);
 L_dfe0:
-    I(0xdfe0u);
+    I_(0xdfe0u);
     DP_MOVS(1, R[0], CF);
 L_dfe4:
-    I(0xdfe4u);
+    I_(0xdfe4u);
     if (C_EQ) {
         SETPC(R[14], 1);
         LEAVE();
     }
 L_dfe8:
-    I(0xdfe8u);
+    I_(0xdfe8u);
     LDR_(0, R[1], 0x4u, 0, 1, 0, 1);
 L_dfec:
-    I(0xdfecu);
+    I_(0xdfecu);
     goto L_de68;
     JUMP(0xdff0u);
 }
@@ -2182,48 +2182,48 @@ void Runimage_e0b4(uint32_t e)
     default: bad_entry(0xe0b4u, e); return;
     }
 L_e0b4:
-    I(0xe0b4u);
+    I_(0xe0b4u);
     LDR_(2, R[1], 0x4u, 1, 1, 0, -1);
 L_e0b8:
-    I(0xe0b8u);
+    I_(0xe0b8u);
     LDR_(3, R[1], 0x0u, 1, 1, 0, -1);
 L_e0bc:
-    I(0xe0bcu);
+    I_(0xe0bcu);
     DP_CMP(R[3], 0x0u);
 L_e0c0:
-    I(0xe0c0u);
+    I_(0xe0c0u);
     if (C_NE) {
         STR_(R[2], R[3], 0x4u, 1, 1, 0, -1);
     }
 L_e0c4:
-    I(0xe0c4u);
+    I_(0xe0c4u);
     if (C_EQ) {
         STR_(R[2], R[0], 0x4u, 1, 1, 0, -1);
     }
 L_e0c8:
-    I(0xe0c8u);
+    I_(0xe0c8u);
     DP_CMP(R[2], 0x0u);
 L_e0cc:
-    I(0xe0ccu);
+    I_(0xe0ccu);
     if (C_NE) {
         STR_(R[3], R[2], 0x0u, 1, 1, 0, -1);
     }
 L_e0d0:
-    I(0xe0d0u);
+    I_(0xe0d0u);
     if (C_EQ) {
         STR_(R[3], R[0], 0x0u, 1, 1, 0, -1);
     }
 L_e0d4:
-    I(0xe0d4u);
+    I_(0xe0d4u);
     DP_MOV(0, 0x0u);
 L_e0d8:
-    I(0xe0d8u);
+    I_(0xe0d8u);
     STR_(R[0], R[1], 0x0u, 1, 1, 0, -1);
 L_e0dc:
-    I(0xe0dcu);
+    I_(0xe0dcu);
     STR_(R[0], R[1], 0x4u, 1, 1, 0, -1);
 L_e0e0:
-    I(0xe0e0u);
+    I_(0xe0e0u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xe0e4u);
@@ -2243,30 +2243,30 @@ void Runimage_e370(uint32_t e)
     default: bad_entry(0xe370u, e); return;
     }
 L_e370:
-    I(0xe370u);
+    I_(0xe370u);
     DP_MOV(1, 0x0u);
 L_e374:
-    I(0xe374u);
+    I_(0xe374u);
     goto L_e37c;
 L_e378:
-    I(0xe378u);
+    I_(0xe378u);
     DP_ADD(1, R[1], 0x1u);
 L_e37c:
-    I(0xe37cu);
+    I_(0xe37cu);
     LDR_(2, R[0], R[1], 1, 1, 1, -1);
 L_e380:
-    I(0xe380u);
+    I_(0xe380u);
     DP_CMP(R[2], 0x1fu);
 L_e384:
-    I(0xe384u);
+    I_(0xe384u);
     if (C_GT) {
         goto L_e378;
     }
 L_e388:
-    I(0xe388u);
+    I_(0xe388u);
     DP_MOV(0, R[1]);
 L_e38c:
-    I(0xe38cu);
+    I_(0xe38cu);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xe390u);
@@ -2283,21 +2283,21 @@ void Runimage_e3d4(uint32_t e)
     default: bad_entry(0xe3d4u, e); return;
     }
 L_e3d4:
-    I(0xe3d4u);
+    I_(0xe3d4u);
     DP_MOV(12, R[14]);
 L_e3d8:
-    I(0xe3d8u);
+    I_(0xe3d8u);
     DP_MOV(1, R[0]);
 L_e3dc:
-    I(0xe3dcu);
+    I_(0xe3dcu);
     SWI(0x400cfu, 0xe3e0u);
 L_e3e0:
-    I(0xe3e0u);
+    I_(0xe3e0u);
     if (C_VC) {
         DP_MOV(0, 0x0u);
     }
 L_e3e4:
-    I(0xe3e4u);
+    I_(0xe3e4u);
     SETPC(R[12], 1);
     LEAVE();
     JUMP(0xe3e8u);
@@ -2323,54 +2323,54 @@ void Runimage_e480(uint32_t e)
     default: bad_entry(0xe480u, e); return;
     }
 L_e480:
-    I(0xe480u);
+    I_(0xe480u);
     DP_MOV(12, R[13]);
 L_e484:
-    I(0xe484u);
+    I_(0xe484u);
     STM_BEGIN(R[13] - 28) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) STM_V((0xe490u | PSR())) R[13] = R[13] - 28; XFER_END;
 L_e488:
-    I(0xe488u);
+    I_(0xe488u);
     DP_SUB(11, R[12], 0x4u);
 L_e48c:
-    I(0xe48cu);
+    I_(0xe48cu);
     DP_CMP(R[13], R[10]);
 L_e490:
-    I(0xe490u);
+    I_(0xe490u);
     if (C_LT) {
         R[14] = 0xe494u | PSR();
         npc = 0xe9acu; CALLI(0xe494u);
     }
 L_e494:
-    I(0xe494u);
+    I_(0xe494u);
     DP_MOV(6, R[2]);
 L_e498:
-    I(0xe498u);
+    I_(0xe498u);
     DP_MOV(5, R[0]);
 L_e49c:
-    I(0xe49cu);
+    I_(0xe49cu);
     DP_MOV(4, R[1]);
 L_e4a0:
-    I(0xe4a0u);
+    I_(0xe4a0u);
     LDR_(0, 0xe4a8u, 0x2cu, 1, 0, 0, -1);
 L_e4a4:
-    I(0xe4a4u);
+    I_(0xe4a4u);
     LDR_(0, R[0], 0x0u, 1, 1, 0, -1);
 L_e4a8:
-    I(0xe4a8u);
+    I_(0xe4a8u);
     DP_CMP(R[0], 0x0u);
 L_e4ac:
-    I(0xe4acu);
+    I_(0xe4acu);
     if (C_NE) {
         R[14] = 0xe4b0u | PSR();
         npc = 0xe970u; CALLI(0xe4b0u);
     }
 L_e4b0:
-    I(0xe4b0u);
+    I_(0xe4b0u);
     if (C_NE) {
         DP_CMP(R[0], 0x0u);
     }
 L_e4b4:
-    I(0xe4b4u);
+    I_(0xe4b4u);
     if (C_NE) {
         R[14] = 0xe4b8u | PSR();
         CALL(Runimage_e588, 0xe588u, 0xe4b8u);
@@ -2394,34 +2394,34 @@ void Runimage_e560(uint32_t e)
     default: bad_entry(0xe560u, e); return;
     }
 L_e560:
-    I(0xe560u);
+    I_(0xe560u);
     DP_MOV(4, 0x0u);
 L_e564:
-    I(0xe564u);
+    I_(0xe564u);
     undefined_insn(0xe564u, 0xee204110u); LEAVE();
 L_e568:
-    I(0xe568u);
+    I_(0xe568u);
     undefined_insn(0xe568u, 0xeddd4100u); LEAVE();
 L_e56c:
-    I(0xe56cu);
+    I_(0xe56cu);
     undefined_insn(0xe56cu, 0xeddd5103u); LEAVE();
 L_e570:
-    I(0xe570u);
+    I_(0xe570u);
     undefined_insn(0xe570u, 0xeddd6106u); LEAVE();
 L_e574:
-    I(0xe574u);
+    I_(0xe574u);
     undefined_insn(0xe574u, 0xeddd7109u); LEAVE();
 L_e578:
-    I(0xe578u);
+    I_(0xe578u);
     DP_ADD(13, R[13], 0x30u);
 L_e57c:
-    I(0xe57cu);
+    I_(0xe57cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_R(4) XFER_END;
 L_e580:
-    I(0xe580u);
+    I_(0xe580u);
     undefined_insn(0xe580u, 0xee204110u); LEAVE();
 L_e584:
-    I(0xe584u);
+    I_(0xe584u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xe588u);
@@ -2440,27 +2440,27 @@ void Runimage_e5d4(uint32_t e)
     default: bad_entry(0xe5d4u, e); return;
     }
 L_e5d4:
-    I(0xe5d4u);
+    I_(0xe5d4u);
     STM_BEGIN(R[13] - 20) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[14]) R[13] = R[13] - 20; XFER_END;
 L_e5d8:
-    I(0xe5d8u);
+    I_(0xe5d8u);
     LDM_BEGIN(R[0] + 0) R[0] = R[0] + 24;  LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) LDM_R(6) XFER_END;
 L_e5dc:
-    I(0xe5dcu);
+    I_(0xe5dcu);
     DP_MOV(7, R[0]);
 L_e5e0:
-    I(0xe5e0u);
+    I_(0xe5e0u);
     SWI(0x600dbu, 0xe5e4u);
 L_e5e4:
-    I(0xe5e4u);
+    I_(0xe5e4u);
     STM_BEGIN(R[7] - 24) STM_V(R[1]) STM_V(R[2]) STM_V(R[3]) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) R[7] = R[7] - 24; XFER_END;
 L_e5e8:
-    I(0xe5e8u);
+    I_(0xe5e8u);
     if (C_VC) {
         DP_MOV(0, 0x0u);
     }
 L_e5ec:
-    I(0xe5ecu);
+    I_(0xe5ecu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 20;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xe5f0u);
@@ -2477,21 +2477,21 @@ void Runimage_e64c(uint32_t e)
     default: bad_entry(0xe64cu, e); return;
     }
 L_e64c:
-    I(0xe64cu);
+    I_(0xe64cu);
     STM_BEGIN(R[13] - 12) STM_V(R[4]) STM_V(R[5]) STM_V(R[14]) R[13] = R[13] - 12; XFER_END;
 L_e650:
-    I(0xe650u);
+    I_(0xe650u);
     LDM_BEGIN(R[0] + 0)  LDM_R(0) LDM_R(1) LDM_R(2) LDM_R(3) LDM_R(4) LDM_R(5) XFER_END;
 L_e654:
-    I(0xe654u);
+    I_(0xe654u);
     SWI(0x600d2u, 0xe658u);
 L_e658:
-    I(0xe658u);
+    I_(0xe658u);
     if (C_VC) {
         DP_MOV(0, 0x0u);
     }
 L_e65c:
-    I(0xe65cu);
+    I_(0xe65cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 12;  LDM_R(4) LDM_R(5) LDM_PC(1) XFER_END;
     LEAVE();
     JUMP(0xe660u);
@@ -2511,34 +2511,34 @@ void Runimage_e6a0(uint32_t e)
     default: bad_entry(0xe6a0u, e); return;
     }
 L_e6a0:
-    I(0xe6a0u);
+    I_(0xe6a0u);
     DP_MOV(12, R[14]);
 L_e6a4:
-    I(0xe6a4u);
+    I_(0xe6a4u);
     DP_MOV(2, R[0]);
 L_e6a8:
-    I(0xe6a8u);
+    I_(0xe6a8u);
     DP_MOV(3, R[1]);
 L_e6ac:
-    I(0xe6acu);
+    I_(0xe6acu);
     SWI(0x600eau, 0xe6b0u);
 L_e6b0:
-    I(0xe6b0u);
+    I_(0xe6b0u);
     if (C_VC) {
         STR_(R[0], R[2], 0x0u, 1, 1, 0, -1);
     }
 L_e6b4:
-    I(0xe6b4u);
+    I_(0xe6b4u);
     if (C_VC) {
         STR_(R[1], R[3], 0x0u, 1, 1, 0, -1);
     }
 L_e6b8:
-    I(0xe6b8u);
+    I_(0xe6b8u);
     if (C_VC) {
         DP_MOV(0, 0x0u);
     }
 L_e6bc:
-    I(0xe6bcu);
+    I_(0xe6bcu);
     SETPC(R[12], 1);
     LEAVE();
     JUMP(0xe6c0u);
@@ -2573,87 +2573,87 @@ void Runimage_e72c(uint32_t e)
     default: bad_entry(0xe72cu, e); return;
     }
 L_e72c:
-    I(0xe72cu);
+    I_(0xe72cu);
     SWI(0x20010u, 0xe730u);
 L_e730:
-    I(0xe730u);
+    I_(0xe730u);
     DP_MOV(2, R[1]);
 L_e734:
-    I(0xe734u);
+    I_(0xe734u);
     LDR_(1, 0xe73cu, 0x190u, 1, 1, 0, -1);
 L_e738:
-    I(0xe738u);
+    I_(0xe738u);
     DP_MVN(3, 0x0u);
 L_e73c:
-    I(0xe73cu);
+    I_(0xe73cu);
     DP_MOV(4, 0x0u);
 L_e740:
-    I(0xe740u);
+    I_(0xe740u);
     DP_MVN(5, 0x0u);
 L_e744:
-    I(0xe744u);
+    I_(0xe744u);
     DP_ADD(0, 0xe74cu, 0x148u);
 L_e748:
-    I(0xe748u);
+    I_(0xe748u);
     LDR_(6, 0xe750u, 0x180u, 1, 1, 0, -1);
 L_e74c:
-    I(0xe74cu);
+    I_(0xe74cu);
     DP_CMP(R[6], 0x0u);
 L_e750:
-    I(0xe750u);
+    I_(0xe750u);
     if (C_EQ) {
         DP_MOV(6, 0x1000u);
     }
 L_e754:
-    I(0xe754u);
+    I_(0xe754u);
     if (C_NE) {
         LDR_(6, R[6], 0x0u, 1, 1, 0, -1);
     }
 L_e758:
-    I(0xe758u);
+    I_(0xe758u);
     DP_MOV(6, SH_ASR(R[6], 10));
 L_e75c:
-    I(0xe75cu);
+    I_(0xe75cu);
     DP_MOV(6, SH_LSL(R[6], 16));
 L_e760:
-    I(0xe760u);
+    I_(0xe760u);
     SWI(0xa0681u, 0xe764u);
 L_e764:
-    I(0xe764u);
+    I_(0xe764u);
     if (C_VS) {
         SWI(0x2bu, 0xe768u);
     }
 L_e768:
-    I(0xe768u);
+    I_(0xe768u);
     DP_MOV(6, SH_LSL(R[6], 16));
 L_e76c:
-    I(0xe76cu);
+    I_(0xe76cu);
     DP_CMP(R[6], 0x60000u);
 L_e770:
-    I(0xe770u);
+    I_(0xe770u);
     if (C_GE) {
         DP_MOV(4, R[0]);
     }
 L_e774:
-    I(0xe774u);
+    I_(0xe774u);
     if (C_GE) {
         DP_ADD(0, 0xe77cu, 0x144u);
     }
 L_e778:
-    I(0xe778u);
+    I_(0xe778u);
     if (C_GE) {
         DP_MOV(3, 0x0u);
     }
 L_e77c:
-    I(0xe77cu);
+    I_(0xe77cu);
     if (C_GE) {
         JUMP(0xe8dcu);
     }
 L_e780:
-    I(0xe780u);
+    I_(0xe780u);
     DP_ADD(0, 0xe788u, 0x8u);
 L_e784:
-    I(0xe784u);
+    I_(0xe784u);
     SWI(0x2bu, 0xe788u);
     JUMP(0xe788u);
 }
@@ -2694,102 +2694,102 @@ void Runimage_ee04(uint32_t e)
     default: bad_entry(0xee04u, e); return;
     }
 L_ee04:
-    I(0xee04u);
+    I_(0xee04u);
     STM_BEGIN(R[13] - 40) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[9]) STM_V(R[10]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_ee08:
-    I(0xee08u);
+    I_(0xee08u);
     DP_MOV(3, 0xfu);
 L_ee0c:
-    I(0xee0cu);
+    I_(0xee0cu);
     STM_BEGIN(R[13] - 4) STM_V(R[3]) R[13] = R[13] - 4; XFER_END;
 L_ee10:
-    I(0xee10u);
+    I_(0xee10u);
     DP_MOV(12, 0xfu);
 L_ee14:
-    I(0xee14u);
+    I_(0xee14u);
     DP_ADD(9, 0xee1cu, 0x5f0u);
 L_ee18:
-    I(0xee18u);
+    I_(0xee18u);
     DP_ADD(9, R[9], 0xcu);
 L_ee1c:
-    I(0xee1cu);
+    I_(0xee1cu);
     LDR_(9, R[9], SH_LSL(R[12], 2), 1, 1, 0, -1);
 L_ee20:
-    I(0xee20u);
+    I_(0xee20u);
     DP_ADD(3, R[0], R[9]);
 L_ee24:
-    I(0xee24u);
+    I_(0xee24u);
     DP_ADD(4, R[1], R[9]);
 L_ee28:
-    I(0xee28u);
+    I_(0xee28u);
     DP_MOV(7, 0x40u);
 L_ee2c:
-    I(0xee2cu);
+    I_(0xee2cu);
     DP_MOV(5, R[3]);
 L_ee30:
-    I(0xee30u);
+    I_(0xee30u);
     DP_MOV(6, R[4]);
 L_ee34:
-    I(0xee34u);
+    I_(0xee34u);
     DP_MOV(8, 0x50u);
 L_ee38:
-    I(0xee38u);
+    I_(0xee38u);
     LDR_(10, R[5], 0x0u, 1, 1, 1, -1);
 L_ee3c:
-    I(0xee3cu);
+    I_(0xee3cu);
     LDR_(11, R[6], 0x4u, 0, 1, 1, 6);
 L_ee40:
-    I(0xee40u);
+    I_(0xee40u);
     DP_ADD(11, R[10], SH_LSL(R[11], 8));
 L_ee44:
-    I(0xee44u);
+    I_(0xee44u);
     LDR_(10, R[2], R[11], 1, 1, 1, -1);
 L_ee48:
-    I(0xee48u);
+    I_(0xee48u);
     STR_(R[10], R[5], 0x4u, 0, 1, 1, 5);
 L_ee4c:
-    I(0xee4cu);
+    I_(0xee4cu);
     DP_SUBS(8, R[8], 0x1u);
 L_ee50:
-    I(0xee50u);
+    I_(0xee50u);
     if (C_GT) {
         goto L_ee38;
     }
 L_ee54:
-    I(0xee54u);
+    I_(0xee54u);
     DP_ADD(3, R[3], 0x500u);
 L_ee58:
-    I(0xee58u);
+    I_(0xee58u);
     DP_ADD(4, R[4], 0x500u);
 L_ee5c:
-    I(0xee5cu);
+    I_(0xee5cu);
     DP_SUBS(7, R[7], 0x1u);
 L_ee60:
-    I(0xee60u);
+    I_(0xee60u);
     if (C_GT) {
         goto L_ee2c;
     }
 L_ee64:
-    I(0xee64u);
+    I_(0xee64u);
     DP_SUBS(12, R[12], 0x1u);
 L_ee68:
-    I(0xee68u);
+    I_(0xee68u);
     if (C_GE) {
         goto L_ee14;
     }
 L_ee6c:
-    I(0xee6cu);
+    I_(0xee6cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 4;  LDM_R(3) XFER_END;
 L_ee70:
-    I(0xee70u);
+    I_(0xee70u);
     DP_SUBS(3, R[3], 0x1u);
 L_ee74:
-    I(0xee74u);
+    I_(0xee74u);
     if (C_GE) {
         goto L_ee0c;
     }
 L_ee78:
-    I(0xee78u);
+    I_(0xee78u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_R(10) LDM_R(11) LDM_R(12) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xee7cu);
@@ -2807,22 +2807,22 @@ void Runimage_eee0(uint32_t e)
     default: bad_entry(0xeee0u, e); return;
     }
 L_eee0:
-    I(0xeee0u);
+    I_(0xeee0u);
     DP_MOV(1, R[0]);
 L_eee4:
-    I(0xeee4u);
+    I_(0xeee4u);
     DP_MOV(0, 0x16u);
 L_eee8:
-    I(0xeee8u);
+    I_(0xeee8u);
     SWI(0x0u, 0xeeecu);
 L_eeec:
-    I(0xeeecu);
+    I_(0xeeecu);
     DP_MOV(0, R[1]);
 L_eef0:
-    I(0xeef0u);
+    I_(0xeef0u);
     SWI(0x0u, 0xeef4u);
 L_eef4:
-    I(0xeef4u);
+    I_(0xeef4u);
     SETPC(R[14], 1);
     LEAVE();
     JUMP(0xeef8u);
@@ -2843,31 +2843,31 @@ void Runimage_ef80(uint32_t e)
     default: bad_entry(0xef80u, e); return;
     }
 L_ef80:
-    I(0xef80u);
+    I_(0xef80u);
     STM_BEGIN(R[13] - 16) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[14]) R[13] = R[13] - 16; XFER_END;
 L_ef84:
-    I(0xef84u);
+    I_(0xef84u);
     DP_MOV(4, R[0]);
 L_ef88:
-    I(0xef88u);
+    I_(0xef88u);
     DP_MOV(5, R[1]);
 L_ef8c:
-    I(0xef8cu);
+    I_(0xef8cu);
     DP_MOV(6, R[2]);
 L_ef90:
-    I(0xef90u);
+    I_(0xef90u);
     SWI(0x1cu, 0xef94u);
 L_ef94:
-    I(0xef94u);
+    I_(0xef94u);
     STR_(R[0], R[4], 0x0u, 1, 1, 0, -1);
 L_ef98:
-    I(0xef98u);
+    I_(0xef98u);
     STR_(R[1], R[5], 0x0u, 1, 1, 0, -1);
 L_ef9c:
-    I(0xef9cu);
+    I_(0xef9cu);
     STR_(R[2], R[6], 0x0u, 1, 1, 0, -1);
 L_efa0:
-    I(0xefa0u);
+    I_(0xefa0u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 16;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xefa4u);
@@ -2890,39 +2890,39 @@ void Runimage_f064(uint32_t e)
     default: bad_entry(0xf064u, e); return;
     }
 L_f064:
-    I(0xf064u);
+    I_(0xf064u);
     STM_BEGIN(R[13] - 40) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[9]) STM_V(R[10]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_f068:
-    I(0xf068u);
+    I_(0xf068u);
     DP_ADD(4, R[1], SH_LSL(R[3], 8));
 L_f06c:
-    I(0xf06cu);
+    I_(0xf06cu);
     DP_ADD(4, R[4], SH_LSL(R[3], 6));
 L_f070:
-    I(0xf070u);
+    I_(0xf070u);
     DP_ADD(4, R[4], R[2]);
 L_f074:
-    I(0xf074u);
+    I_(0xf074u);
     DP_MOV(3, 0x18u);
 L_f078:
-    I(0xf078u);
+    I_(0xf078u);
     LDM_BEGIN(R[0] + 0) R[0] = R[0] + 12;  LDM_R(5) LDM_R(6) LDM_R(7) XFER_END;
 L_f07c:
-    I(0xf07cu);
+    I_(0xf07cu);
     STM_BEGIN(R[4] + 0) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) XFER_END;
 L_f080:
-    I(0xf080u);
+    I_(0xf080u);
     DP_ADD(4, R[4], 0x140u);
 L_f084:
-    I(0xf084u);
+    I_(0xf084u);
     DP_SUBS(3, R[3], 0x1u);
 L_f088:
-    I(0xf088u);
+    I_(0xf088u);
     if (C_GT) {
         goto L_f078;
     }
 L_f08c:
-    I(0xf08cu);
+    I_(0xf08cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_R(10) LDM_R(11) LDM_R(12) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xf090u);
@@ -2957,77 +2957,77 @@ void Runimage_f234(uint32_t e)
     default: bad_entry(0xf234u, e); return;
     }
 L_f234:
-    I(0xf234u);
+    I_(0xf234u);
     STM_BEGIN(R[13] - 36) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[9]) STM_V(R[10]) STM_V(R[11]) STM_V(R[14]) R[13] = R[13] - 36; XFER_END;
 L_f238:
-    I(0xf238u);
+    I_(0xf238u);
     DP_BIC(2, R[2], 0x3u);
 L_f23c:
-    I(0xf23cu);
+    I_(0xf23cu);
     DP_ADD(4, R[1], SH_LSL(R[3], 8));
 L_f240:
-    I(0xf240u);
+    I_(0xf240u);
     DP_ADD(4, R[4], SH_LSL(R[3], 6));
 L_f244:
-    I(0xf244u);
+    I_(0xf244u);
     DP_ADD(2, R[4], R[2]);
 L_f248:
-    I(0xf248u);
+    I_(0xf248u);
     DP_ADD(1, R[0], 0x800u);
 L_f24c:
-    I(0xf24cu);
+    I_(0xf24cu);
     DP_MOV(11, 0x20u);
 L_f250:
-    I(0xf250u);
+    I_(0xf250u);
     DP_MOV(9, R[2]);
 L_f254:
-    I(0xf254u);
+    I_(0xf254u);
     DP_MOV(10, 0x8u);
 L_f258:
-    I(0xf258u);
+    I_(0xf258u);
     LDM_BEGIN(R[0] + 0) R[0] = R[0] + 8;  LDM_R(3) LDM_R(4) XFER_END;
 L_f25c:
-    I(0xf25cu);
+    I_(0xf25cu);
     LDM_BEGIN(R[1] + 0) R[1] = R[1] + 8;  LDM_R(5) LDM_R(6) XFER_END;
 L_f260:
-    I(0xf260u);
+    I_(0xf260u);
     LDM_BEGIN(R[9] + 0)  LDM_R(7) LDM_R(8) XFER_END;
 L_f264:
-    I(0xf264u);
+    I_(0xf264u);
     DP_AND(7, R[7], R[5]);
 L_f268:
-    I(0xf268u);
+    I_(0xf268u);
     DP_AND(8, R[8], R[6]);
 L_f26c:
-    I(0xf26cu);
+    I_(0xf26cu);
     DP_ORR(7, R[7], R[3]);
 L_f270:
-    I(0xf270u);
+    I_(0xf270u);
     DP_ORR(8, R[8], R[4]);
 L_f274:
-    I(0xf274u);
+    I_(0xf274u);
     STM_BEGIN(R[9] + 0) STM_V(R[7]) STM_V(R[8]) R[9] = R[9] + 8; XFER_END;
 L_f278:
-    I(0xf278u);
+    I_(0xf278u);
     DP_SUBS(10, R[10], 0x1u);
 L_f27c:
-    I(0xf27cu);
+    I_(0xf27cu);
     if (C_GT) {
         goto L_f258;
     }
 L_f280:
-    I(0xf280u);
+    I_(0xf280u);
     DP_ADD(2, R[2], 0x140u);
 L_f284:
-    I(0xf284u);
+    I_(0xf284u);
     DP_SUBS(11, R[11], 0x1u);
 L_f288:
-    I(0xf288u);
+    I_(0xf288u);
     if (C_GT) {
         goto L_f250;
     }
 L_f28c:
-    I(0xf28cu);
+    I_(0xf28cu);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 36;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_R(10) LDM_R(11) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xf290u);
@@ -3060,75 +3060,75 @@ void Runimage_f374(uint32_t e)
     default: bad_entry(0xf374u, e); return;
     }
 L_f374:
-    I(0xf374u);
+    I_(0xf374u);
     STM_BEGIN(R[13] - 40) STM_V(R[4]) STM_V(R[5]) STM_V(R[6]) STM_V(R[7]) STM_V(R[8]) STM_V(R[9]) STM_V(R[10]) STM_V(R[11]) STM_V(R[12]) STM_V(R[14]) R[13] = R[13] - 40; XFER_END;
 L_f378:
-    I(0xf378u);
+    I_(0xf378u);
     LDM_BEGIN(R[2] + 0) R[2] = R[2] + 8;  LDM_R(3) LDM_R(4) XFER_END;
 L_f37c:
-    I(0xf37cu);
+    I_(0xf37cu);
     DP_ADD(5, R[1], SH_LSL(R[4], 8));
 L_f380:
-    I(0xf380u);
+    I_(0xf380u);
     DP_ADD(5, R[5], SH_LSL(R[4], 6));
 L_f384:
-    I(0xf384u);
+    I_(0xf384u);
     DP_ADD(5, R[5], R[3]);
 L_f388:
-    I(0xf388u);
+    I_(0xf388u);
     DP_MOV(8, 0x18u);
 L_f38c:
-    I(0xf38cu);
+    I_(0xf38cu);
     LDM_BEGIN(R[2] + 0) R[2] = R[2] + 8;  LDM_R(3) LDM_R(4) XFER_END;
 L_f390:
-    I(0xf390u);
+    I_(0xf390u);
     DP_ADD(6, R[5], R[3]);
 L_f394:
-    I(0xf394u);
+    I_(0xf394u);
     DP_MOV(1, 0x0u);
 L_f398:
-    I(0xf398u);
+    I_(0xf398u);
     LDR_(7, R[0], SH_ASR(R[1], 16), 1, 1, 1, -1);
 L_f39c:
-    I(0xf39cu);
+    I_(0xf39cu);
     DP_ADD(1, R[1], R[4]);
 L_f3a0:
-    I(0xf3a0u);
+    I_(0xf3a0u);
     DP_CMP(R[7], 0x0u);
 L_f3a4:
-    I(0xf3a4u);
+    I_(0xf3a4u);
     if (C_NE) {
         STR_(R[7], R[6], 0x1u, 0, 1, 1, 6);
     }
 L_f3a8:
-    I(0xf3a8u);
+    I_(0xf3a8u);
     if (C_EQ) {
         DP_ADD(6, R[6], 0x1u);
     }
 L_f3ac:
-    I(0xf3acu);
+    I_(0xf3acu);
     DP_CMP(R[1], 0x180000u);
 L_f3b0:
-    I(0xf3b0u);
+    I_(0xf3b0u);
     if (C_LT) {
         goto L_f398;
     }
 L_f3b4:
-    I(0xf3b4u);
+    I_(0xf3b4u);
     DP_ADD(5, R[5], 0x140u);
 L_f3b8:
-    I(0xf3b8u);
+    I_(0xf3b8u);
     DP_ADD(0, R[0], 0x18u);
 L_f3bc:
-    I(0xf3bcu);
+    I_(0xf3bcu);
     DP_SUBS(8, R[8], 0x1u);
 L_f3c0:
-    I(0xf3c0u);
+    I_(0xf3c0u);
     if (C_GT) {
         goto L_f38c;
     }
 L_f3c4:
-    I(0xf3c4u);
+    I_(0xf3c4u);
     LDM_BEGIN(R[13] + 0) R[13] = R[13] + 40;  LDM_R(4) LDM_R(5) LDM_R(6) LDM_R(7) LDM_R(8) LDM_R(9) LDM_R(10) LDM_R(11) LDM_R(12) LDM_PC(0) XFER_END;
     LEAVE();
     JUMP(0xf3c8u);
