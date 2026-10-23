@@ -8,7 +8,7 @@ SS      ?= $(HOME)/stuff/superspider
 CC      ?= gcc
 CFLAGS  ?= -O2 -g
 SRC     := ../source
-LIBS    := $(shell pkg-config --libs sdl3) -lm -lpthread
+LIBS    := $(shell pkg-config --libs sdl3) -ljpeg -lm -lpthread
 
 GAME_C  := play between sat levels global userint
 NATIVE  := $(addprefix build/obj/,$(GAME_C:=.o))
